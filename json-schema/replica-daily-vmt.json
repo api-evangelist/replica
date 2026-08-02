@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/replica/refs/heads/main/json-schema/replica-daily-vmt.json",
+  "title": "Daily VMT",
+  "description": "One row of Replica's \"Daily VMT\" dataset. Derived from the published schema table at https://documentation.replicahq.com/docs/daily-vmt.",
+  "x-source": "https://documentation.replicahq.com/docs/daily-vmt",
+  "x-generated": "2026-08-02",
+  "x-method": "derived",
+  "x-status": "active",
+  "type": "object",
+  "properties": {
+    "geoid": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The ID of the geographic feature in the selected geo breakdown. If the feature is a Census geography, this field will contain its FIPS code."
+    },
+    "geo_name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The name of the geographic feature in the selected geo breakdown."
+    },
+    "date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The date of the network link volume estimation underlying the VMT summation."
+    },
+    "vmt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The estimated network link volumes within the geographic feature multiplied by the length of the network links within the feature."
+    }
+  },
+  "additionalProperties": true
+}

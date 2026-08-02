@@ -1,0 +1,1900 @@
+generated: '2026-08-02'
+method: searched
+source: https://documentation.replicahq.com/llms.txt
+name: Replica Data Dictionary
+description: Field-level data dictionary for every Replica dataset whose schema is published on documentation.replicahq.com.
+  Harvested verbatim from the "Schema" tables of each dataset documentation page (field name, content
+  type, sample value, description). Replica publishes no OpenAPI or developer API; these dataset schemas
+  are the machine-relevant contract for its data products, delivered through the Replica Studio platform,
+  CSV export and direct database access.
+docs: https://documentation.replicahq.com/
+dataset_count: 19
+field_count: 338
+datasets:
+- key: active-transportation
+  title: Active Transportation Trips
+  status: active
+  docs: https://documentation.replicahq.com/docs/active-transportation
+  docs_updated: '2025-11-13'
+  field_count: 33
+  fields:
+  - name: activity_id
+    content_type: String
+    sample_value: '15323941267251300000'
+    description: 'A randomly assigned unique identifier defined for each trip. A trip is defined as travel
+      between two locations with a discrete purpose at the origin and destination. Some intermediate stops
+      with short dwell time may be captured within a single trip. Criteria for this dwell time may vary.
+      Examples of trips: • Home > Work, • Work > Gym, • Shop > Eat, • Home > Starbucks drive-thru > Work'
+  - name: person_id
+    content_type: String
+    sample_value: '4339817784218880000'
+    description: A randomly assigned unique identifier for each person modeled within the synthetic population.
+  - name: household_id
+    content_type: String
+    sample_value: '14408018579505000000'
+    description: A randomly assigned unique identifier for each household modeled within the synthetic
+      population.
+  - name: mode
+    content_type: String
+    sample_value: WALKING
+    description: 'Primary transportation mode used for the trip. A trip is often made up of multiple travel
+      modes, such as a journey to work that includes a walk to a rail station followed by a subway ride.
+      In this case two modes were used by the traveler during their trip, walking and public transit.
+      Only the primary mode of travel across a set of trip segments is included. The primary mode is determined
+      using the following ranking: 1) Public transit, 2) Driving (private auto)/Auto passenger/Taxi/TNC,
+      3) Biking, 4) Walking. This table is limited to the following: • BIKING: Trips made by people biking.
+      Replica does not model scooter trips and does not separate out e-bike trips • WALKING: Trips made
+      by people walking'
+  - name: travel_purpose
+    content_type: String
+    sample_value: WORK
+    description: 'The destination activity assigned to a synthetic person. For example, if a person is
+      traveling to work, the purpose of the trip is ''Work,'' whereas if a person is traveling to a restaurant
+      the activity is ''Eat.'' Valid values are: • COMMERCIAL: Trips by medium and heavy trucks for deliveries
+      and other commercial purposes • EAT: Trips to restaurants • HOME: Trips where the destination is
+      the person''s home • LODGING: Trips by visitors to overnight accommodation such as a hotel • MAINTENANCE:
+      Trips to hairdressers, auto shops, banks, and a variety of other locations for the purpose of conducting
+      errands • OTHER: Catch-all category for all other trips not assigned any of the purposes listed
+      herein • RECREATION: Trips to recreational destinations such as parks and swimming pools • REGION_DEPARTURE:
+      Trips by visitors to a port-of-exit, such as an airport, or major train station • SCHOOL: Trips
+      to schools such as community colleges and universities • SHOP: Trips to stores and other commercial
+      centers • SOCIAL: Trips for social activities • STAGE: Trips made by non-residents that start and
+      end outside the region • WORK: Trips where the destination is the person''s workplace • WORK FROM
+      HOME: Trips where a resident is returning home to work (specifically for residents who are working
+      from home on the modeled day). For example, if a person goes out to lunch during the work day, their
+      return trip home will be labeled “work_from_home"'
+  - name: tour_type
+    content_type: String
+    sample_value: COMMUTE
+    description: 'Indicates what type of tour that included this trip. Tours are travel events that start
+      at one location and return to that same location. For example, when a person travels to work and
+      returns home, this is a home-based work tour. A tour can have two or more trips. Valid options are:
+      • WORK_BASED: Tours that started and ended at work, excluding commute. For example: Work > Eat >
+      Work. • COMMUTE: Tours from home to work and back home. Also includes intermediate stops at other
+      destinations. For example: Home > Recreation > Work > Shop > Home • OTHER_HOME_BASED: Tours that
+      started and ended at home, excluding commutes. For example: Home > Shop > Eat > Home'
+  - name: previous_activity_type
+    content_type: String
+    sample_value: HOME
+    description: 'The activity assigned to a synthetic person prior to starting travel. Valid values are:
+      • COMMERCIAL: Trips by medium and heavy trucks for deliveries and other commercial purposes • EAT:
+      Trips to restaurants • HOME: Trips where the destination is the person''s home • LODGING: Trips
+      by visitors to overnight accommodation such as a hotel • MAINTENANCE: Trips to hairdressers, auto
+      shops, banks, and a variety of other locations • OTHER: Catch all category for all other trips not
+      assigned any of the purposes listed herein • RECREATION: Trips to recreational destinations such
+      as parks and swimming pools • REGION_DEPARTURE: Trips by visitors to a port-of-exit, such as an
+      airport, or major train station • SCHOOL: Trips to schools such as community colleges and universities
+      • SHOP: Trips to stores and other commercial centers • SOCIAL: Trips for social activities • STAGE:
+      Trips made by non-residents that start and end outside the region • WORK: Trips where the destination
+      is the person''s workplace'
+  - name: timezone
+    content_type: String
+    sample_value: America/Los_Angeles
+    description: Timezone of the trip’s start location, using standard tz naming conventions.
+  - name: start_time
+    content_type: Time
+    sample_value: 2019-01-10 06:08:00 America/Los_Angeles
+    description: Date and 24-hour time of trip start, reported as yyyy-mm-dd hh:mm:ss timezone.
+  - name: start_local_hour
+    content_type: Integer
+    sample_value: '12'
+    description: Hour of day that the trip started, reported in the local time zone in 24-hour time format.
+      Values in this field range between 0 and 23.
+  - name: end_time
+    content_type: Time
+    sample_value: 2019-01-10 07:11:04 America/Los_Angeles
+    description: Date and 24-hour time of trip end, reported as yyyy-mm-dd hh:mm:ss timezone.
+  - name: end_local_hour
+    content_type: Integer
+    sample_value: '14'
+    description: Hour of day that the trip ended, reported in the local time zone in 24-hour time format.
+      Values in this field range between 0 and 23.
+  - name: duration_minutes
+    content_type: Integer
+    sample_value: '63'
+    description: Duration of trip in minutes, calculated as the difference between the trip start_time
+      and end_time.
+  - name: distance_miles
+    content_type: Float
+    sample_value: '10.7999733493896'
+    description: Distance in miles measured along the trip route.
+  - name: transit_route_ids
+    content_type: String
+    description: NULL for this table
+  - name: network_link_ids
+    content_type: String
+    sample_value: '10541610554341416382'
+    description: Unique ID assigned to the link (road segment) that the trip is associated with.
+  - name: vehicle_type
+    content_type: String (len 20)
+    description: NULL for this table
+  - name: vehicle_fuel_type
+    content_type: String
+    description: NULL for this table
+  - name: vehicle_fuel_technology
+    content_type: String
+    description: NULL for this table
+  - name: origin_bgrp
+    content_type: String(len 12)
+    sample_value: '410510010004'
+    description: The US Census Bureau-assigned FIPS code of the block group from which the trip originated.
+  - name: origin_bgrp_lat
+    content_type: Float
+    sample_value: '45.492294'
+    description: Latitude of the geometric centroid for the origin block group, reported in decimal degrees,
+      WGS 84.
+  - name: origin_bgrp_lng
+    content_type: Float
+    sample_value: '-122.65334'
+    description: Longitude of the geometric centroid for the origin block group, reported in decimal degrees,
+      WGS 84.
+  - name: destination_bgrp
+    content_type: String (len 12)
+    sample_value: '410510079001'
+    description: US Census Bureau-assigned FIPS of the block group in which the trip ended.
+  - name: destination_bgrp_lat
+    content_type: Float
+    sample_value: '45.557407'
+    description: Latitude of the geometric centroid for the destination block group, reported in decimal
+      degrees, WGS 84.
+  - name: destination_bgrp_lng
+    content_type: Float
+    sample_value: '-122.54931'
+    description: Longitude of the geometric centroid for the destination block group, reported in decimal
+      degrees, WGS 84.
+  - name: origin_land_use_l1
+    content_type: String
+    sample_value: residential
+    description: 'The primary land use category of the trip origin. Valid options are: • residential •
+      commercial • mixed_use • industrial • civic_institutional • transportation_utilities • open space
+      • agriculture • other • unknown'
+  - name: origin_land_use_l2
+    content_type: String
+    sample_value: single_family
+    description: 'The secondary land use category of the trip origin. Valid options are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: destination_land_use_l1
+    content_type: String
+    sample_value: commercial
+    description: 'The primary land use category of the trip destination. Valid options are: • residential
+      • commercial • mixed_use • industrial • civic_institutional • transportation_utilities • open space
+      • agriculture • other • unknown'
+  - name: destination_land_use_l2
+    content_type: String
+    sample_value: non_retail_attraction
+    description: 'The secondary land use category of the trip destination. Valid options are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: origin_building_use_l1
+    content_type: String
+    sample_value: residential
+    description: 'The primary building use category of the trip origin. Valid options are: • residential
+      • commercial • industrial • civic_institutional • transportation_utilities • open space • agriculture
+      • other • unknown'
+  - name: origin_building_use_l2
+    content_type: String
+    sample_value: single_family
+    description: 'The secondary building use category of the trip origin. Valid options are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: destination_building_use_l1
+    content_type: String
+    sample_value: commercial
+    description: 'The primary building use category of the trip destination. Valid options are: • residential
+      • commercial • industrial • civic_institutional • transportation_utilities • open space • agriculture
+      • other • unknown'
+  - name: destination_building_use_l2
+    content_type: String
+    sample_value: non_retail_attraction
+    description: 'The secondary building use category of the trip destination. Valid options are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+- key: annual-average-daily-traffic-aadt
+  title: Annual Average Daily Traffic (AADT)
+  status: active
+  docs: https://documentation.replicahq.com/docs/annual-average-daily-traffic-aadt
+  docs_updated: '2026-05-04'
+  field_count: 13
+  fields:
+  - name: stable_edge_id
+    content_type: String
+    sample_value: '2171086143316490127'
+    description: The matching stable edge id (mapping to Replica's road network) for this segment. This
+      id will match the Places season for Fall of the selected year.
+  - name: comp_stable_edge_id
+    content_type: String
+    sample_value: '13608319450172218181'
+    description: If bidirectional is True for this segment, this field provides the matching stable edge
+      id (mapping to Replica's road network) for the opposing direction of travel. This id will match
+      the Places season for Fall of the selected year.
+  - name: osm_id
+    content_type: String
+    sample_value: '155000229'
+    description: OSM Way ID (version 2020-07-01 for the 2019 data; version 2021-09-01 for the 2021 data;
+      version 2022-12-01 for the 2022 data)
+  - name: street_name
+    content_type: String
+    sample_value: Isabel Avenue
+    description: The common name of the network link if available. Matches the name assigned by OpenStreetMap.
+  - name: highway
+    content_type: String
+    sample_value: trunk
+    description: The classification of the link based on OpenStreetMap data.
+  - name: length
+    content_type: Float
+    sample_value: '229.22'
+    description: The distance (length) of the network link in meters.
+  - name: bidirectional
+    content_type: Boolean
+    sample_value: 'TRUE'
+    description: True if the provided traffic volume is the sum for both directions of an undivided roadway.
+      False if for only one direction.
+  - name: heading
+    content_type: Integer
+    sample_value: '176'
+    description: The heading of the network link.
+  - name: compass_direction
+    content_type: String
+    sample_value: NE
+    description: The compass direction of the network link.
+  - name: geometry
+    content_type: Geography
+    sample_value: LINESTRING(-97.398509 27.662232, -97.398556 27.662034, -97.398517 27.661988)
+    description: The geometry (linestring) for each network link.
+  - name: aadt
+    content_type: Integer
+    sample_value: '494'
+    description: The annual average daily traffic volume of the network link. This value is inclusive
+      of single-unit and combination truck volumes.
+  - name: aadt_single_unit
+    content_type: Integer
+    sample_value: '54'
+    description: The annual average daily traffic volume of single unit trucks on the network link. Populated
+      for FRC 1 and 2 roads, null otherwise.
+  - name: aadt_combination
+    content_type: Integer
+    sample_value: '44'
+    description: The annual average daily traffic volume of combination trucks on the network link. Populated
+      for FRC 1 and 2 roads, null otherwise.
+- key: auto-tnc-trips
+  title: Auto and TNC Trips
+  status: active
+  docs: https://documentation.replicahq.com/docs/auto-tnc-trips
+  docs_updated: '2025-11-13'
+  field_count: 33
+  fields:
+  - name: activity_id
+    content_type: String
+    sample_value: '15323941267251300000'
+    description: 'A randomly assigned unique identifier defined for each trip. A trip is defined as travel
+      between two locations with a discrete purpose at the origin and destination. Some intermediate stops
+      with short dwell time may be captured within a single trip. Criteria for this dwell time may vary.
+      Examples of trips: • Home > Work, • Work > Gym, • Shop > Eat, • Home > Starbucks drive-thru > Work'
+  - name: person_id
+    content_type: String
+    sample_value: '4339817784218880000'
+    description: A randomly assigned unique identifier for each person modeled within the synthetic population.
+  - name: household_id
+    content_type: String
+    sample_value: '14408018579505000000'
+    description: A randomly assigned unique identifier for each household modeled within the synthetic
+      population.
+  - name: mode
+    content_type: String
+    sample_value: PRIVATE_AUTO
+    description: 'The primary transportation mode used for the trip. A trip is often made up of multiple
+      travel modes, such as a journey to work that includes a walk to a rail station followed by a subway
+      ride. In this case two modes were used by the traveler during their trip, walking and public transit.
+      Only the primary mode of travel across a set of trip segments is included. The primary mode is determined
+      using the following ranking: 1) Public transit, 2) Driving (private auto)/Auto passenger/Taxi/TNC,
+      3) Biking, 4) Walking. This table is limited to the following: • CARPOOL: Trips made by passengers
+      in private auto vehicles. Sum Carpool and Private Auto trips to get the total number of people who
+      traveled in private autos • ON_DEMAND_AUTO: Trips made by passengers in a Taxi or using a Transportation
+      Network Company (TNC) such as Uber or Lyft • PRIVATE_AUTO: Trips made by drivers in private auto
+      vehicles'
+  - name: travel_purpose
+    content_type: String
+    sample_value: WORK
+    description: 'The destination activity assigned to a synthetic person. For example, if a person is
+      traveling to work, the purpose of the trip is ''Work,'' whereas if a person is traveling to a restaurant
+      the activity is ''Eat.'' Valid values are: • COMMERCIAL: Trips by medium and heavy trucks for deliveries
+      and other commercial purposes • EAT: Trips to restaurants • HOME: Trips where the destination is
+      the person''s home • LODGING: Trips by visitors to overnight accommodations such as a hotel • MAINTENANCE/ERRANDS:
+      Includes trips to auto shops, banks, church and religious organizations, daycare services, dry cleaning
+      and laundry services, hairdressers, nail salons, or storage facilities. • OTHER: Catch-all category
+      for all other trips not assigned any of the purposes listed herein • RECREATION: Trips to recreational
+      destinations, including amusement parks and arcades, gym and fitness centers, casinos, museums,
+      parks and swimming pools, spectator sports, golf courses and country clubs, or movies. • REGION_DEPARTURE:
+      Trips by visitors to a port-of-exit, such as an airport, or major train station • SCHOOL: Trips
+      to schools such as community colleges and universities • SHOP: Trips to stores and other commercial
+      centers, including automobile dealers, gas stations, grocery stores, postal service, pharmacies
+      and drug stores, or retail shops. • SOCIAL: Trips for social activities • STAGE: Trips made by non-residents
+      that start and end outside the region • WORK: Trips where the destination is the person''s workplace
+      • WORK FROM HOME: Trips where a resident is returning home to work (specifically for residents who
+      are working from home on the modeled day). For example, if a person goes out to lunch during the
+      work day, their return trip home will be labeled “work_from_home"'
+  - name: tour_type
+    content_type: String
+    sample_value: COMMUTE
+    description: 'Indicates what type of tour included this trip. Tours are travel events that start at
+      one location and return to that same location. For example, when a person travels to work and returns
+      home, it is a home-based work tour. A tour can have two or more trips. Valid values are: • WORK_BASED:
+      Tours that started and ended at work, excluding commute e.g. Work > Eat > Work • COMMUTE: Tours
+      from home to work and back home including intermediate stops at other destinations e.g. Home > Recreation
+      > Work > Shop > Home • OTHER_HOME_BASED: Tours that started and ended at home, excluding commutes
+      e.g. Home > Shop > Eat > Home'
+  - name: previous_activity_type
+    content_type: String
+    sample_value: HOME
+    description: 'The activity assigned to a synthetic person prior to starting travel. Valid values are:
+      • COMMERCIAL: Trips by medium and heavy trucks for deliveries and other commercial purposes • EAT:
+      Trips to restaurants • HOME: Trips where the destination is the person''s home • LODGING: Trips
+      by visitors to overnight accommodations such as a hotel • MAINTENANCE/ERRANDS: Includes trips to
+      auto shops, banks, church and religious organizations, daycare services, dry cleaning and laundry
+      services, hairdressers, nail salons, or storage facilities. • OTHER: Catch all category for all
+      other trips not assigned any of the purposes listed herein • RECREATION: Trips to recreational destinations,
+      including amusement parks and arcades, gym and fitness centers, casinos, museums, parks and swimming
+      pools, spectator sports, golf courses and country clubs, or movies. • REGION_DEPARTURE: Trips by
+      visitors to a port-of-exit, such as an airport, or major train station • SCHOOL: Trips to schools
+      such as community colleges and universities • SHOP: Trips to stores and other commercial centers,
+      including automobile dealers, gas stations, grocery stores, postal service, pharmacies and drug
+      stores, or retail shops. • SOCIAL: Trips for social activities • STAGE: Trips made by non-residents
+      that start and end outside the region • WORK: Trips where the destination is the person''s workplace'
+  - name: timezone
+    content_type: String
+    sample_value: America/Los_Angeles
+    description: Timezone of the trip’s start location, using standard tz naming conventions. America/Los_Angeles
+      Timezone • Cal-Nev • Northwest America/Chicago Timezone • Great Lakes • North Central • South Central
+      • Southwest America/New_York Timezone • Mid-Atlantic • North Atlantic • Northeast • South Atlantic
+      Pacific/Honolulu Timezone •Hawaii
+  - name: start_time
+    content_type: Time
+    sample_value: 2019-01-10 06:08:00 America/Los_Angeles
+    description: Date and 24-hour time of trip start, reported as yyyy-mm-dd hh:mm:ss timezone.
+  - name: start_local_hour
+    content_type: Integer
+    sample_value: '12'
+    description: Hour of day that the trip started, reported in the local time zone in 24-hour time format.
+      Values in this field range between 0 and 23.
+  - name: end_time
+    content_type: Time
+    sample_value: 2019-01-10 07:11:04 America/Los_Angeles
+    description: Date and 24-hour time of trip end, reported as yyyy-mm-dd hh:mm:ss timezone.
+  - name: end_local_hour
+    content_type: Integer
+    sample_value: '14'
+    description: Hour of day that the trip ended, reported in the local time zone in 24-hour time format.
+      Values in this field range between 0 and 23.
+  - name: duration_minutes
+    content_type: Integer
+    sample_value: '63'
+    description: Duration of trip in minutes, calculated as the difference between the trip start_time
+      and end_time.
+  - name: distance_miles
+    content_type: Float
+    sample_value: '10.79997335'
+    description: Distance in miles measured along the trip route.
+  - name: transit_route_ids
+    content_type: String
+    description: NULL for this table
+  - name: network_link_ids
+    content_type: String
+    sample_value: '10541610554341416382'
+    description: Unique ID assigned to the link (road segment) that the trip is associated with.
+  - name: vehicle_type
+    content_type: String (Len 20)
+    sample_value: PASSENGER_CAR
+    description: 'The vehicle type assigned to the vehicle of the synthetic trip. Valid values are: •
+      PASSENGER_CAR • MEDIUM_COMMERCIAL: Medium-duty commercial vehicles (14,000 - 26,000 lbs) • HEAVY_COMMERCIAL:
+      Heavy-duty commercial vehicles (>26,00 lbs) • MOTORCYCLE Note: If values are NULL, this means that
+      this data is not available for the region yet but we hope to have it soon.'
+  - name: vehicle_fuel_type
+    content_type: String
+    sample_value: ELECTRIC
+    description: 'The fuel technology assigned to the vehicle of the synthetic trip. Valid values are:
+      • ELECTRIC: Battery Electric Vehicle • OTHER_NON_BEV: Non-Battery Electric Vehicle • UNKNOWN_FUEL_TYPE
+      Note: Vehicle Fuel Type is only modeled for private auto trips. For each private auto trip, the
+      value will be ELECTRIC (trip was taken in a battery electric vehicle) or OTHER_NON_BEV (trip was
+      taken in a non-battery electric vehicle). For trips with other modes, like TNC or Auto Passenger,
+      the value will be UNKNOWN_FUEL_TYPE.'
+  - name: origin_bgrp
+    content_type: String(Len 12)
+    sample_value: '410510010004'
+    description: The US Census Bureau-assigned FIPS code of the block group from which the trip originated.
+  - name: origin_bgrp_lat
+    content_type: Float
+    sample_value: '45.492294'
+    description: Latitude of the geometric centroid for the origin block group, reported in decimal degrees,
+      WGS 84.
+  - name: origin_bgrp_lng
+    content_type: Float
+    sample_value: '-122.65334'
+    description: Longitude of the geometric centroid for the origin block group, reported in decimal degrees,
+      WGS 84.
+  - name: destination_bgrp
+    content_type: String (Len 12)
+    sample_value: '410510079001'
+    description: US Census Bureau-assigned FIPS of the block group in which the trip ended.
+  - name: destination_bgrp_lat
+    content_type: Float
+    sample_value: '45.557407'
+    description: Latitude of the geometric centroid for the destination block group, reported in decimal
+      degrees, WGS 84.
+  - name: destination_bgrp_lng
+    content_type: Float
+    sample_value: '-122.54931'
+    description: Longitude of the geometric centroid for the destination block group, reported in decimal
+      degrees, WGS 84.
+  - name: origin_land_use_l1
+    content_type: String
+    sample_value: residential
+    description: 'The primary land use category of the trip origin. Valid values are: • residential •
+      commercial • mixed_use • industrial • civic_institutional • transportation_utilities • open space
+      • agriculture • other • unknown'
+  - name: origin_land_use_l2
+    content_type: String
+    sample_value: single_family
+    description: 'The secondary land use category of the trip origin. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: destination_land_use_l1
+    content_type: String
+    sample_value: commercial
+    description: 'The primary land use category of the trip destination. Valid values are: • residential
+      • commercial • mixed_use • industrial • civic_institutional • transportation_utilities • open space
+      • agriculture • other • unknown'
+  - name: destination_land_use_l2
+    content_type: String
+    sample_value: non_retail_attraction
+    description: 'The secondary land use category of the trip destination. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: origin_building_use_l1
+    content_type: String
+    sample_value: residential
+    description: 'The primary building use category of the trip origin. Valid values are: • residential
+      • commercial • industrial • civic_institutional • transportation_utilities • open space • agriculture
+      • other • unknown'
+  - name: origin_building_use_l2
+    content_type: String
+    sample_value: single_family
+    description: 'The secondary building use category of the trip origin. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: destination_building_use_l1
+    content_type: String
+    sample_value: commercial
+    description: 'The primary building use category of the trip destination. Valid values are: • residential
+      • commercial • industrial • civic_institutional • transportation_utilities • open space • agriculture
+      • other • unknown'
+  - name: destination_building_use_l2
+    content_type: String
+    sample_value: non_retail_attraction
+    description: 'The secondary building use category of the trip destination. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: trip_type
+    content_type: String
+    sample_value: II
+    description: 'Indicates whether or not the trip started or ended inside or outside of the core model
+      region. Valid values are: • II: core > core region • IE: core > donut region • EI: donut region
+      > core region • EE: donut region > donut region'
+- key: commercial-freight
+  title: Commercial Freight Trips
+  status: active
+  docs: https://documentation.replicahq.com/docs/commercial-freight
+  docs_updated: '2025-11-13'
+  field_count: 33
+  fields:
+  - name: activity_id
+    content_type: String
+    sample_value: '15323941267251300000'
+    description: 'A randomly assigned unique identifier defined for each trip. A trip is defined as travel
+      between two locations with a discrete purpose at the origin and destination. Some intermediate stops
+      with short dwell time may be captured within a single trip. Criteria for this dwell time may vary.
+      Examples of trips: • Home > Work, • Work > Gym, • Shop > Eat, • Home > Starbucks drive-thru > Work'
+  - name: person_id
+    content_type: String
+    sample_value: '4339817784218880000'
+    description: A randomly assigned unique identifier for each person modeled within the synthetic population.
+  - name: household_id
+    content_type: String
+    sample_value: '14408018579505000000'
+    description: A randomly assigned unique identifier for each household modeled within the synthetic
+      population.
+  - name: mode
+    content_type: String
+    sample_value: COMMERCIAL
+    description: 'The primary transportation mode used for the trip. A trip is often made up of multiple
+      travel modes, such as a journey to work that includes a walk to a rail station followed by a subway
+      ride. In this case two modes were used by the traveler during their trip, walking and public transit.
+      Only the primary mode of travel across a set of trip segments is included. The primary mode is determined
+      using the following ranking: 1) Public transit, 2) Driving (private auto)/Auto passenger/Taxi/TNC,
+      3) Biking, 4) Walking. This table is limited to the following: • COMMERCIAL: Trips made by medium
+      and heavy trucks'
+  - name: travel_purpose
+    content_type: String
+    sample_value: COMMERCIAL
+    description: 'All values in this table are: • COMMERCIAL: Trips by medium and heavy trucks for deliveries
+      and other commercial purposes'
+  - name: tour_type
+    content_type: String
+    sample_value: OTHER_HOME_BASED
+    description: 'Indicates what type of tour included this trip. Tours are travel events that start at
+      one location and return to that same location. All values in this table are: • OTHER_HOME_BASED:
+      Tours that started and ended at home, excluding commutes e.g. Home > Shop > Eat > Home'
+  - name: previous_activity_type
+    content_type: String
+    sample_value: COMMERCIAL
+    description: 'The activity assigned to a synthetic person prior to starting travel. All values in
+      this table are: • COMMERCIAL: Trips by medium and heavy trucks for deliveries and other commercial
+      purposes'
+  - name: timezone
+    content_type: String
+    sample_value: America/Los_Angeles
+    description: Timezone of the trip’s start location, using standard tz naming conventions.
+  - name: start_time
+    content_type: Time
+    sample_value: 2019-01-10 06:08:00 America/Los_Angeles
+    description: Date and 24-hour time of trip start, reported as yyyy-mm-dd hh:mm:ss timezone.
+  - name: start_local_hour
+    content_type: Integer
+    sample_value: '12'
+    description: Hour of day that the trip started, reported in the local time zone in 24-hour time format.
+      Values in this field range between 0 and 23.
+  - name: end_time
+    content_type: Time
+    sample_value: 2019-01-10 07:11:04 America/Los_Angeles
+    description: Date and 24-hour time of trip end, reported as yyyy-mm-dd hh:mm:ss timezone.
+  - name: end_local_hour
+    content_type: Integer
+    sample_value: '14'
+    description: Hour of day that the trip ended, reported in the local time zone in 24-hour time format.
+      Values in this field range between 0 and 23.
+  - name: duration_minutes
+    content_type: Integer
+    sample_value: '63'
+    description: Duration of trip in minutes, calculated as the difference between the trip start_time
+      and end_time.
+  - name: distance_miles
+    content_type: Float
+    sample_value: '10.79997335'
+    description: Distance in miles measured along the trip route.
+  - name: transit_route_ids
+    content_type: String
+    description: NULL for this table
+  - name: network_link_ids
+    content_type: String
+    sample_value: '10541610554341416382'
+    description: Unique ID assigned to the link (road segment) that the trip is associated with.
+  - name: vehicle_type
+    content_type: String (Len 20)
+    sample_value: MEDIUM_COMMERCIAL
+    description: 'The vehicle type assigned to the vehicle of the synthetic trip. Valid values are: •
+      MEDIUM_COMMERCIAL: Medium-duty commercial vehicles (14,000 - 26,000 lbs) • HEAVY _ COMMERCIAL: Heavy-duty
+      commercial vehicles (>26,00 lbs) Note: If values are NULL, this means that this data is not available
+      for the region yet but we hope to have it soon.'
+  - name: vehicle_fuel_technology
+    content_type: String
+    sample_value: ICE
+    description: 'The fuel technology assigned to the vehicle of the synthetic trip. Valid values are:
+      • ICE • BEV • FCV • PHEV • UNKNOWN_FUEL_TECHNOLOGY Note: If values are NULL, this means that this
+      data is not available for the region yet but we hope to have it soon.'
+  - name: origin_bgrp
+    content_type: String(Len 12)
+    sample_value: '410510010004'
+    description: The US Census Bureau-assigned FIPS code of the block group from which the trip originated.
+  - name: origin_bgrp_lat
+    content_type: Float
+    sample_value: '45.492294'
+    description: Latitude of the geometric centroid for the origin block group, reported in decimal degrees,
+      WGS 84.
+  - name: origin_bgrp_lng
+    content_type: Float
+    sample_value: '-122.65334'
+    description: Longitude of the geometric centroid for the origin block group, reported in decimal degrees,
+      WGS 84.
+  - name: destination_bgrp
+    content_type: String (Len 12)
+    sample_value: '410510079001'
+    description: US Census Bureau-assigned FIPS of the block group in which the trip ended.
+  - name: destination_bgrp_lat
+    content_type: Float
+    sample_value: '45.557407'
+    description: Latitude of the geometric centroid for the destination block group, reported in decimal
+      degrees, WGS 84.
+  - name: destination_bgrp_lng
+    content_type: Float
+    sample_value: '-122.54931'
+    description: Longitude of the geometric centroid for the destination block group, reported in decimal
+      degrees, WGS 84.
+  - name: origin_land_use_l1
+    content_type: String
+    sample_value: residential
+    description: 'The primary land use category of the trip origin. Valid values are: • residential •
+      commercial • mixed_use • industrial • civic_institutional • transportation_utilities • open space
+      • agriculture • other • unknown'
+  - name: origin_land_use_l2
+    content_type: String
+    sample_value: single_family
+    description: 'The secondary land use category of the trip origin. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: destination_land_use_l1
+    content_type: String
+    sample_value: commercial
+    description: 'The primary land use category of the trip destination. Valid values are: • residential
+      • commercial • mixed_use • industrial • civic_institutional • transportation_utilities • open space
+      • agriculture • other • unknown'
+  - name: destination_land_use_l2
+    content_type: String
+    sample_value: non_retail_attraction
+    description: 'The secondary land use category of the trip destination. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: origin_building_use_l1
+    content_type: String
+    sample_value: residential
+    description: 'The primary building use category of the trip origin. Valid values are: • residential
+      • commercial • industrial • civic_institutional • transportation_utilities • open space • agriculture
+      • other • unknown'
+  - name: origin_building_use_l2
+    content_type: String
+    sample_value: single_family
+    description: 'The secondary building use category of the trip origin. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: destination_building_use_l1
+    content_type: String
+    sample_value: commercial
+    description: 'The primary building use category of the trip destination. Valid values are: • residential
+      • commercial • industrial • civic_institutional • transportation_utilities • open space • agriculture
+      • other • unknown'
+  - name: destination_building_use_l2
+    content_type: String
+    sample_value: non_retail_attraction
+    description: 'The secondary building use category of the trip destination. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: trip_type
+    content_type: String
+    sample_value: II
+    description: 'Indicates whether or not the trip started or ended inside or outside of the core model
+      region. Valid values are: • II: core > core region • IE: core > donut region • EI: donut region
+      > core region • EE: donut region > donut region'
+- key: consumer-spending-by-county-to-county-flows
+  title: '[Discontinued] Spend County-to-County Flows'
+  status: discontinued
+  docs: https://documentation.replicahq.com/docs/consumer-spending-by-county-to-county-flows
+  docs_updated: '2025-11-13'
+  field_count: 6
+  fields:
+  - name: home_geo_id
+    content_type: Integer
+    sample_value: '48113'
+    description: FIPS county code of the home location county.
+  - name: home_geo_name
+    content_type: String
+    sample_value: Dallas County, TX
+    description: Name of the home location county.
+  - name: merchant_geo_id
+    content_type: Integer
+    sample_value: '48397'
+    description: FIPS county code of the merchant location county.
+  - name: merchant_geo_name
+    content_type: String
+    sample_value: Rockwall County, TX
+    description: Name of the merchant location county.
+  - name: week/month_starting
+    content_type: Date
+    sample_value: '2022-12-24'
+    description: The first day of the week (Saturday) or month of the corresponding row’s data, depending
+      on whether monthly or weekly data was selected.
+  - name: category__spend
+    content_type: Float
+    sample_value: '537.92'
+    description: 'The total estimated consumer spend in the spend category in a given week by residents
+      of the home_name county at merchants in the merchant_name county. Categories include: • Airline/hospitality/car
+      rental • Entertainment/recreation • Gas stations/parking/taxis/tolls • Grocery stores • Restaurants/bars
+      • Retail'
+- key: consumer-spending-by-home-merchant-location
+  title: '[Discontinued] Weekly Spend (by home location)'
+  status: discontinued
+  docs: https://documentation.replicahq.com/docs/consumer-spending-by-home-merchant-location
+  docs_updated: '2025-11-13'
+  field_count: 5
+  fields:
+  - name: geo_id
+    content_type: Integer
+    sample_value: '36005014100'
+    description: The GEOID of the corresponding row's geography, as defined by the US Census Bureau.
+  - name: geo_name
+    content_type: String
+    sample_value: 141 (Bronx, NY)
+    description: The name corresponding to the row’s geography, as defined by the US Census Bureau or
+      specified by the user.
+  - name: week/month_starting
+    content_type: Date
+    sample_value: '2022-06-13'
+    description: The first day of the week (Saturday) or month of the corresponding row’s data, depending
+      on whether monthly or weekly data was selected.
+  - name: population
+    content_type: Integer
+    sample_value: '5756'
+    description: The total population in the geography selected.
+  - name: category_spend_online/offline/total
+    content_type: Float
+    sample_value: '42157.48438'
+    description: 'The total consumer spend in a category in a given week across the following categories:
+      • Airline/hospitality/car rental • Entertainment/recreation • Gas stations/parking/taxis/tolls •
+      Grocery stores • Restaurants/bars • Retail Note: spend by home location includes both online and
+      in-person spend estimates. Spend by merchant estimates only include in-person spending.'
+- key: crash-data
+  title: Crash Data
+  status: active
+  docs: https://documentation.replicahq.com/docs/crash-data
+  docs_updated: '2026-07-22'
+  field_count: 16
+  fields:
+  - name: '`rank`'
+    content_type: Integer
+    sample_value: '`1`'
+    description: Row rank, 1-based. Rows are sorted by crash date, newest first. Not a stable crash ID;
+      purely the position in this export.
+  - name: '`date`'
+    content_type: Date
+    sample_value: '`12/29/2024`'
+    description: Date the crash occurred, formatted `MM/DD/YYYY`. Local time.
+  - name: '`time`'
+    content_type: Time
+    sample_value: '`9:00 PM`'
+    description: Hour the crash occurred, rendered as a 12-hour clock label from an integer hour (0–23).
+      Local time.
+  - name: '`severity`'
+    content_type: String
+    sample_value: '`1 Fatality, 1 A Injury, 1 C Injury`'
+    description: Computed summary of the crash's outcomes, built from the underlying fatality and KABCO-based
+      injury counts. Lists only the non-zero categories.
+  - name: '`collision_type`'
+    content_type: String
+    sample_value: '`Front-to-front`'
+    description: Manner of collision.
+  - name: '`mode`'
+    content_type: String
+    sample_value: '`Pedestrian, Motor Vehicle`'
+    description: Comma-separated list of transportation modes involved in the crash.
+  - name: '`contributing_factor`'
+    content_type: String
+    sample_value: '`None Noted`'
+    description: Primary reported contributing factor.
+  - name: '`location_type`'
+    content_type: String
+    sample_value: '`On Roadway`'
+    description: Type of location where the crash occurred.
+  - name: '`street`'
+    content_type: String
+    sample_value: '`MU- WESTERN AVE`'
+    description: Primary street name of the crash location.
+  - name: '`cross_street_name`'
+    content_type: String
+    sample_value: '`26TH ST`'
+    description: Nearest cross street of the crash location.
+  - name: '`highway`'
+    content_type: String
+    sample_value: '`Yes`'
+    description: Whether the crash occurred on a highway.
+  - name: '`road_classification`'
+    content_type: String
+    sample_value: '`Principal Arterial - Other`'
+    description: Functional road classification.
+  - name: '`road_surface_condition`'
+    content_type: String
+    sample_value: '`Wet`'
+    description: Road surface condition at time of crash.
+  - name: '`light_condition`'
+    content_type: String
+    sample_value: '`Dark - Lighted`'
+    description: Lighting condition at time of crash.
+  - name: '`weather_condition`'
+    content_type: String
+    sample_value: '`Rain`'
+    description: Weather condition at time of crash.
+  - name: '`jurisdiction`'
+    content_type: String
+    sample_value: '`State Highway Agency`'
+    description: Reporting jurisdiction.
+- key: daily-network-link-volumes
+  title: Daily Network Link Volumes
+  status: active
+  docs: https://documentation.replicahq.com/docs/daily-network-link-volumes
+  docs_updated: '2026-03-06'
+  field_count: 5
+  fields:
+  - name: stableEdgeId
+    description: The unique ID of the network link.
+  - name: biStableEdgeId
+    description: The common identifier between two adjacent opposite-direction links for links on undivided
+      roadways. On divided roadways, this field is a unique identifier similar to stableEdgeId.
+  - name: street_name
+    description: The principal name of the street belonging to the network link.
+  - name: date
+    description: The date of the network link volume estimation.
+  - name: daily_vehicle_trips
+    description: The estimated vehicle trip count on the selected date for the selected link. If directional
+      counts are selected, this count will be per stableEdgeId; if not, this count will be per biStableEdgeId,
+      which sums up counts on undivided roadways.
+- key: daily-o-d-data
+  title: Daily O-D Pairs
+  status: active
+  docs: https://documentation.replicahq.com/docs/daily-o-d-data
+  docs_updated: '2026-04-30'
+  field_count: 6
+  fields:
+  - name: geoid_origin
+    description: The ID of the geographic feature where the trips originate. If the feature is a Census
+      geography, this field will contain its FIPS code.
+  - name: geo_name_origin
+    description: The name of the geographic feature where the trips originate.
+  - name: geoid_destination
+    description: The ID of the geographic feature where the trips terminate. If the feature is a Census
+      geography, this field will contain its FIPS code.
+  - name: geo_name_destination
+    description: The name of the geographic feature where the trips terminate.
+  - name: date
+    description: The date at which OD counts are estimated in the format YYYY-MM-DD. Similar to the hour,
+      this date is reported in local time at the centroid of the starting H3 cell.
+  - name: trips
+    description: The estimated daily OD count for the selected start and end geography on the estimation
+      date.
+- key: daily-vmt
+  title: Daily VMT
+  status: active
+  docs: https://documentation.replicahq.com/docs/daily-vmt
+  docs_updated: '2026-03-06'
+  field_count: 4
+  fields:
+  - name: geoid
+    description: The ID of the geographic feature in the selected geo breakdown. If the feature is a Census
+      geography, this field will contain its FIPS code.
+  - name: geo_name
+    description: The name of the geographic feature in the selected geo breakdown.
+  - name: date
+    description: The date of the network link volume estimation underlying the VMT summation.
+  - name: vmt
+    description: The estimated network link volumes within the geographic feature multiplied by the length
+      of the network links within the feature.
+- key: demographics-employment
+  title: Demographics and Employment
+  status: active
+  docs: https://documentation.replicahq.com/docs/demographics-employment
+  docs_updated: '2025-11-13'
+  field_count: 39
+  fields:
+  - name: household_id
+    content_type: String
+    sample_value: '14102589208980400000'
+    description: Unique identifier of a household.
+  - name: person_id
+    content_type: String
+    sample_value: '14408018579505000000'
+    description: Unique identifier of a person.
+  - name: BLOCKGROUP
+    content_type: String
+    sample_value: '410050201001'
+    description: The US Census Bureau-assigned FIPS code of the census block group containing the housing
+      unit based on the decennial census 2010.
+  - name: BLOCKGROUP_work
+    content_type: String
+    sample_value: '410050227021'
+    description: The US Census Bureau-assigned FIPS code of the census block group containing the person's
+      workplace (for employed persons only.)
+  - name: BLOCKGROUP_school
+    content_type: String
+    sample_value: '410510063001'
+    description: The US Census Bureau-assigned FIPS code of the census block group containing the person's
+      school (for students only).
+  - name: TRACT
+    content_type: String
+    sample_value: '41005020100'
+    description: The US Census Bureau-assigned FIPS code of the census tract containing the housing unit.
+  - name: TRACK_work
+    content_type: String
+    sample_value: '41005022702'
+    description: The US Census Bureau-assigned FIPS code of the census tract containing the person's workplace
+      (for employed persons only).
+  - name: TRACT_school
+    content_type: String
+    sample_value: '41051006300'
+    description: The US Census Bureau-assigned FIPS code of the census tract containing the person's school
+      (for students only).
+  - name: age_group*
+    content_type: String
+    sample_value: '18_24'
+    description: 'Age range a person falls within. Value ranges include: • lte_4 • 5_14 • 15_17 • 18_24
+      • 25_34 • 35_64 • 65_plus'
+  - name: age
+    content_type: Integer
+    sample_value: '19'
+    description: Age, in years old, assigned to the person.
+  - name: sex
+    content_type: String
+    sample_value: M
+    description: Sex assigned to the person, male (M) or female (F).
+  - name: race
+    content_type: String
+    sample_value: white
+    description: 'Race assigned to the person. Valid values include: • american_indian_alaska_native •
+      asian • black_african_american • hawaiin_pacific • other_race_alone • two_or_more_races • white'
+  - name: ethnicity
+    content_type: String
+    sample_value: not_hispanic_or_latino
+    description: 'Ethnicity of a person. Valid values include: • not_hispanic_or_latino • hispanic_or_latino'
+  - name: individual_income_group
+    content_type: String
+    sample_value: '0_20000'
+    description: 'Range a person''s annual income falls within. Value ranges include: • lte_0 • 0_20000
+      • 20000_40000 • 40000_80000 • 80000_100000 • 100000_plus'
+  - name: individual_income
+    content_type: Integer
+    sample_value: '7500'
+    description: 'Total annual income of a person. Note: Some individuals have negative income levels.
+      Negative income is typically associated with business or capital loss that’s subsequently allocated
+      to the individual taxpayer. This comes from Census data.'
+  - name: employment
+    content_type: String
+    sample_value: employed
+    description: 'Employment status of a person. Valid values include: • employed • notinlf • under_16
+      • unemployed'
+  - name: education*
+    content_type: String
+    sample_value: k_12
+    description: 'Education level of a person. Valid values include: • advanced_degree • bachelors_degree
+      • high_school • k_12 • no_school • some_college • under_3'
+  - name: school_grade_attending*
+    content_type: String
+    sample_value: not_attending_school
+    description: 'Current grade level assigned to a person. Valid values include: • graduate • kindergarten
+      • not_attending_school • school • undergraduate'
+  - name: industry*
+    content_type: String
+    sample_value: naics51
+    description: 'Industry sector a person works within, reported in NAICS code. For a list of NAICS codes
+      see: https://www.naics.com/search-naics-codes-by-industry.'
+  - name: household_role*
+    content_type: String
+    sample_value: child
+    description: 'The role of the person in the household. Valid values include: • child • GQ • head_of_household
+      • immobile_GQ • non_relative • relative • spouse'
+  - name: subfamily_number*
+    content_type: Integer
+    sample_value: '1'
+    description: Number assigned to the subfamily that the person belongs to in a household.
+  - name: subfamily_relationship*
+    content_type: String
+    sample_value: parent_with_child
+    description: 'Relationship of a person within the subfamily. Valid values include: • child • husband/wife_no_children
+      • husband/wife_with_children • parent_with_child • N/A'
+  - name: commute_mode
+    content_type: String
+    sample_value: driving
+    description: 'Typical commute mode used by a person. Valid values include: • biking • carpool • driving
+      • not_working • transit • walking • worked_from_home'
+  - name: tenure*
+    content_type: String
+    sample_value: owner
+    description: 'Tenure of household. Valid values include: • owner • renter • GQ'
+  - name: migration*
+    content_type: String
+    sample_value: same_house
+    description: 'Indicates mobility status (if the household has lived in the same unit 1 year ago).
+      Valid values include: • N/A (Lived in house <1 year; Also applies to group quarters) • same_house
+      (non-movers) • outside_us • within_us'
+  - name: household_size
+    content_type: String
+    sample_value: 3_person
+    description: 'Number of persons that make up the household. Valid values include: • 1_person • 1_person_group_quarters
+      • 2_person • 3_person • 4_person • 5_person • 6_person • 7_plus_person'
+  - name: household_income_group*
+    content_type: String
+    sample_value: 125000_plus
+    description: 'Income range that the total income of the household falls within. Valid values include:
+      • lte_10000 • 10000_40000 • 40000_75000 • 75000_125000 • 125000_plus'
+  - name: household_income
+    content_type: Integer
+    sample_value: '408500'
+    description: Total income of the household.
+  - name: family_structure*
+    content_type: String
+    sample_value: married_couple
+    description: 'Household family structure. Valid values include: • family_single • GQ • living_alone
+      • married_couple • nonfamily_single'
+  - name: vehicles
+    content_type: String
+    sample_value: 3_plus
+    description: 'Number of vehicles owned by a household. Valid values include: • zero • 1 • 2 • 3_plus
+      • GQ'
+  - name: building_type*
+    content_type: String
+    sample_value: mobile
+    description: 'Indicates the unit in the household’s structure. Valid values include: • mobile (mobile
+      home, trailer, boat, RV, or van) • single_family (one-family home, attached or detached) • several_units
+      (2-4 apartments) • multiple_units (5+ apartments) • GQ_structure (group quarters)'
+  - name: resident_type
+    content_type: String
+    sample_value: core
+    description: 'Indicates whether or not the person is a resident of the region. Valid values include:
+      • core: A resident of the core region. • donut: A resident of the surrounding counties who work
+      or go to school in the core region. • visitor: A person who does not normally reside in the core
+      or donut region who enters and/or exits the region via a ‘port of entry’ (airport, freeway crossing).'
+  - name: language*
+    content_type: String
+    sample_value: english
+    description: 'Indicates the household language. Valid values include: • english • spanish • indo-european
+      • asian-pacific • other • GQ_language'
+  - name: lat*
+    content_type: Float
+    sample_value: '37.434211'
+    description: Latitude of the block group centroid representing the home location, reported in decimal
+      degrees, WGS 84.
+  - name: lng*
+    content_type: Float
+    sample_value: '-122.16801'
+    description: Longitude of the block group centroid representing the home location, reported in decimal
+      degrees, WGS 84.
+  - name: lat_work*
+    content_type: Float
+    sample_value: '37.434211'
+    description: Latitude of the block group centroid representing the work location, reported in decimal
+      degrees, WGS 84 (for employed persons only).
+  - name: lng_work*
+    content_type: Float
+    sample_value: '-122.16801'
+    description: Longitude of the block group centroid representing the work location, reported in decimal
+      degrees, WGS 84 (for employed persons only).
+  - name: lat_school*
+    content_type: Float
+    sample_value: '37.434211'
+    description: Latitude of the block group centroid representing the school location, reported in decimal
+      degrees, WGS 84 (for students only).
+  - name: lng_school*
+    content_type: Float
+    sample_value: '-122.16801'
+    description: Longitude of the block group centroid representing the school location, reported in decimal
+      degrees, WGS 84 (for students only).
+- key: disaggregate-trip-tables
+  title: Seasonal Trip Table
+  status: active
+  docs: https://documentation.replicahq.com/docs/disaggregate-trip-tables
+  docs_updated: '2025-11-13'
+  field_count: 33
+  fields:
+  - name: activity_id
+    content_type: String
+    sample_value: '12456839588397874772'
+    description: 'A randomly assigned unique identifier defined for each trip. A trip is defined as travel
+      between two locations with a discrete purpose at the origin and destination. Some intermediate stops
+      with short dwell time may be captured within a single trip. Criteria for this dwell time may vary.
+      Examples of trips: • Home > Work, • Work > Gym, • Shop > Eat, • Home > Starbucks drive-thru > Work'
+  - name: person_id
+    content_type: String
+    sample_value: '5666337802154872887'
+    description: A randomly assigned unique identifier for each person modeled within the synthetic population.
+  - name: household_id
+    content_type: String
+    sample_value: '12981492413956702344'
+    description: A randomly assigned unique identifier for each household modeled within the synthetic
+      population.
+  - name: mode
+    content_type: String
+    sample_value: PUBLIC_TRANSIT
+    description: 'The primary transportation mode used for the trip. A trip is often made up of multiple
+      travel modes, such as a journey to work that includes a walk to a rail station followed by a subway
+      ride. In this case two modes were used by the traveler during their trip, walking and public transit.
+      Only the primary mode of travel across a set of trip segments is included. The primary mode is determined
+      using the following ranking: 1) Public transit, 2) Driving (private auto)/Auto passenger/Taxi/TNC,
+      3) Biking, 4) Walking. Valid values are: • BIKING: Trips made by people biking. Replica does not
+      model scooter trips and does not separate out e-bike trips • CARPOOL: Trips made by passengers in
+      private auto vehicles. Sum Carpool and Private Auto trips to get the total number of people who
+      traveled in private autos • COMMERCIAL: Trips made by medium and heavy trucks • ON_DEMAND_AUTO:
+      Trips made by passengers in a Taxi or using a Transportation Network Company (TNC) such as Uber
+      or Lyft • OTHER_TRAVEL_MODE: Catch-all category for all other trips not assigned any of the modes
+      listed herein • PRIVATE_AUTO: Trips made by drivers in private auto vehicles • PUBLIC_TRANSIT: Trips
+      that primarily used public transit, such as buses, light rail, and subways • WALKING: Trips made
+      by people walking Replica does not explicitly model trips made by school buses. These trips would
+      fall under other mode categories, like auto passengers of private auto vehicles, private auto (for
+      those old enough to drive), or walking.'
+  - name: travel_purpose
+    content_type: String
+    sample_value: WORK
+    description: 'The destination activity assigned to a synthetic person. For example, if a person is
+      traveling to work, the purpose of the trip is ''Work,'' whereas if a person is traveling to a restaurant
+      the activity is ''Eat.'' Valid values are: • COMMERCIAL: Trips by medium and heavy trucks for deliveries
+      and other commercial purposes • EAT: Trips to restaurants • HOME: Trips where the destination is
+      the person''s home • LODGING: Trips by visitors to overnight accommodation such as a hotel • MAINTENANCE:
+      Trips to hairdressers, auto shops, banks, and a variety of other locations for the purpose of conducting
+      errands • OTHER: Catch-all category for all other trips not assigned any of the purposes listed
+      herein • RECREATION: Trips to recreational destinations such as parks and swimming pools • REGION_DEPARTURE:
+      Trips to a port-of-exit, such as an airport, or freeway crossing. • SCHOOL: Trips to schools such
+      as community colleges and universities • SHOP: Trips to stores and other commercial centers • SOCIAL:
+      Trips for social activities • STAGE: Trips made by non-residents that start and end outside the
+      region • WORK: Trips where the destination is the person''s workplace • WORK FROM HOME: Trips where
+      a resident is returning home to work (specifically for residents who are working from home on the
+      modeled day). For example, if a person goes out to lunch during the work day, their return trip
+      home will be labeled “work_from_home"'
+  - name: tour_type
+    content_type: String
+    sample_value: COMMUTE
+    description: 'Indicates what type of tour included this trip. Tours are travel events that start at
+      one location and return to that same location. For example, when a person travels to work and returns
+      home, it is a home-based work tour. A tour can have two or more trips. Valid values are: • WORK_BASED:
+      Tours that started and ended at work, excluding commute e.g. Work > Eat > Work • COMMUTE: Tours
+      from home to work and back home including intermediate stops at other destinations e.g. Home > Recreation
+      > Work > Shop > Home • OTHER_HOME_BASED: Tours that started and ended at home, excluding commutes
+      e.g. Home > Shop > Eat > Home'
+  - name: previous_activity_type
+    content_type: String
+    sample_value: HOME
+    description: 'The activity assigned to a synthetic person prior to starting travel. Valid values are:
+      • COMMERCIAL: Trips by medium and heavy trucks for deliveries and other commercial purposes • EAT:
+      Trips to restaurants • HOME: Trips where the destination is the person''s home • LODGING: Trips
+      by visitors to overnight accommodation such as a hotel • MAINTENANCE: Trips to hairdressers, auto
+      shops, banks, and a variety of other locations • OTHER: Catch all category for all other trips not
+      assigned any of the purposes listed herein • RECREATION: Trips to recreational destinations such
+      as parks and swimming pools • REGION_ARRIVAL: Trips to a port-of-entry, such as an airport, or freeway
+      crossing • REGION_DEPARTURE: Trips to a port-of-exit, such as an airport, or freeway crossing •
+      SCHOOL: Trips to schools such as community colleges and universities • SHOP: Trips to stores and
+      other commercial centers • SOCIAL: Trips for social activities • STAGE: Trips made by non-residents
+      that start and end outside the region • WORK: Trips where the destination is the person''s workplace'
+  - name: timezone
+    content_type: String
+    sample_value: America/Los_Angeles
+    description: Timezone of the trip’s start location, using standard tz naming conventions.
+  - name: start_time
+    content_type: Time
+    sample_value: 2019-01-10 06:08:00 America/Los_Angeles
+    description: Date and 24-hour time of trip start, reported as yyyy-mm-dd hh:mm:ss timezone.
+  - name: start_local_hour
+    content_type: Integer
+    sample_value: '12'
+    description: Hour of day that the trip started, reported in the local time zone in 24-hour time format.
+      Values in this field range between 0 and 23.
+  - name: end_time
+    content_type: Time
+    sample_value: 2019-01-10 07:11:04 America/Los_Angeles
+    description: Date and 24-hour time of trip end, reported as yyyy-mm-dd hh:mm:ss timezone.
+  - name: end_local_hour
+    content_type: Integer
+    sample_value: '14'
+    description: Hour of day that the trip ended, reported in the local time zone in 24-hour time format.
+      Values in this field range between 0 and 23.
+  - name: duration_minutes
+    content_type: Integer
+    sample_value: '63'
+    description: Duration of trip in minutes, calculated as the difference between the trip start_time
+      and end_time.
+  - name: distance_miles
+    content_type: Float
+    sample_value: '10.79997335'
+    description: Distance in miles measured along the trip route.
+  - name: transit_route_ids
+    content_type: String
+    sample_value: Capital Metro:803
+    description: The ID of the transit route used for a trip. Only applies to trips with mode as “PUBLIC_TRANSIT.”
+      Transit Agency name and Route ID pulled from agency’s GTFS feed.
+  - name: network_link_ids
+    content_type: String
+    sample_value: '10541610554341416382'
+    description: Unique ID assigned to the link (road segment) that the trip is associated with.
+  - name: vehicle_type
+    content_type: String (Len 20)
+    sample_value: PASSENGER_CAR
+    description: 'The vehicle type assigned to the vehicle of the synthetic trip. Valid values are: •
+      PASSENGER_CAR • MEDIUM_COMMERCIAL: Medium-duty commercial vehicles (14,000 - 26,000 lbs) • HEAVY_COMMERCIAL:
+      Heavy-duty commercial vehicles (>26,00 lbs) • MOTORCYCLE Note: If values are NULL, this means that
+      this data is not available for the region yet but we hope to have it soon.'
+  - name: vehicle_fuel_type
+    content_type: String
+    sample_value: ICE
+    description: 'The fuel technology assigned to the vehicle of the synthetic trip. Valid values are:
+      • ELECTRIC: Battery Electric Vehicle • OTHER_NON_BEV: Non-Battery Electric Vehicle • UNKNOWN_FUEL_TYPE
+      Note: Vehicle Fuel Type is only modeled for private auto trips. For each private auto trip, the
+      value will be ELECTRIC (trip was taken in a battery electric vehicle) or OTHER_NON_BEV (trip was
+      taken in a non-battery electric vehicle). For trips with other modes, like TNC or Auto Passenger,
+      the value will be UNKNOWN_FUEL_TYPE.'
+  - name: origin_bgrp
+    content_type: String (Len 12)
+    sample_value: '410510010004'
+    description: The US Census Bureau-assigned FIPS code of the block group from which the trip originated.
+  - name: origin_bgrp_lat
+    content_type: Float
+    sample_value: '45.492294'
+    description: Latitude of the geometric centroid for the origin block group, reported in decimal degrees,
+      WGS 84.
+  - name: origin_bgrp_lng
+    content_type: Float
+    sample_value: '-122.65334'
+    description: Longitude of the geometric centroid for the origin block group, reported in decimal degrees,
+      WGS 84.
+  - name: destination_bgrp
+    content_type: String (Len 12)
+    sample_value: '410510079001'
+    description: US Census Bureau-assigned FIPS of the block group in which the trip ended.
+  - name: destination_bgrp_lat
+    content_type: Float
+    sample_value: '45.557407'
+    description: Latitude of the geometric centroid for the destination block group, reported in decimal
+      degrees, WGS 84.
+  - name: destination_bgrp_lng
+    content_type: Float
+    sample_value: '-122.54931'
+    description: Longitude of the geometric centroid for the destination block group, reported in decimal
+      degrees, WGS 84.
+  - name: origin_land_use_l1
+    content_type: String
+    sample_value: residential
+    description: 'The primary land use category of the trip origin. Valid values are: • residential •
+      commercial • mixed_use • industrial • civic_institutional • transportation_utilities • open space
+      • agriculture • other • unknown'
+  - name: origin_land_use_l2
+    content_type: String
+    sample_value: single_family
+    description: 'The secondary land use category of the trip origin. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: destination_land_use_l1
+    content_type: String
+    sample_value: commercial
+    description: 'The primary land use category of the trip destination. Valid values are: • residential
+      • commercial • mixed_use • industrial • civic_institutional • transportation_utilities • open space
+      • agriculture • other • unknown'
+  - name: destination_land_use_l2
+    content_type: String
+    sample_value: non_retail_attraction
+    description: 'The secondary land use category of the trip destination. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: origin_building_use_l1
+    content_type: String
+    sample_value: residential
+    description: 'The primary building use category of the trip origin. Valid values are: • residential
+      • commercial • mixed_use • industrial • civic_institutional • transportation_utilities • open space
+      • agriculture • other • unknown'
+  - name: origin_building_use_l2
+    content_type: String
+    sample_value: single_family
+    description: 'The secondary building use category of the trip origin. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: destination_building_use_l1
+    content_type: String
+    sample_value: commercial
+    description: 'The primary building use category of the trip destination. Valid values are: • residential
+      • commercial • mixed_use • industrial • civic_institutional • transportation_utilities • open space
+      • agriculture • other • unknown'
+  - name: destination_building_use_l2
+    content_type: String
+    sample_value: non_retail_attraction
+    description: 'The secondary building use category of the trip destination. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: trip_type
+    content_type: String
+    sample_value: II
+    description: 'Indicates whether or not the trip started or ended inside or outside of the core model
+      region. Valid values are: • II: core > core region • IE: core > donut region • EI: donut region
+      > core region • EE: donut region > donut region'
+- key: free-flow-speed-per-network-link
+  title: Annual Speeds per Network Link
+  status: active
+  docs: https://documentation.replicahq.com/docs/free-flow-speed-per-network-link
+  docs_updated: '2026-05-04'
+  field_count: 15
+  fields:
+  - name: stable_edge_id
+    content_type: String
+    sample_value: '6544473848226082043'
+    description: A unique identifier for each road segment.
+  - name: osm_id
+    content_type: String
+    sample_value: '5149900'
+    description: OSM Way ID (version 2021-09-01 for the 2021 data; version 2022-12-01 for the 2022 data)
+  - name: street_name
+    content_type: String
+    sample_value: Scenic Avenue
+    description: The common name of the network link if available. Matches the name assigned by OpenStreetMap.
+  - name: highway
+    content_type: String
+    sample_value: secondary_link
+    description: The classification of the link based on OpenStreetMap data if available.
+  - name: length
+    content_type: Float
+    sample_value: '29.46'
+    description: The length of the network link in meters.
+  - name: lanes
+    content_type: Integer
+    sample_value: '2'
+    description: The number of lanes in the network link.
+  - name: heading
+    content_type: Integer
+    sample_value: '121'
+    description: The heading of the network link.
+  - name: compass_direction
+    content_type: String
+    sample_value: SW
+    description: The compass direction of the network link.
+  - name: geometry
+    content_type: String
+    sample_value: LINESTRING(-122.819859 45.52401, -122.821542 45.524663, -122.82234 45.524944, -122.833081
+      45.529006)
+    description: 'Orientation of speed relative to OSM way (True: parallel, False: antiparallel).'
+  - name: speed_limit_mph
+    content_type: Integer
+    sample_value: '45'
+    description: Speed limit of the network link in miles per hour
+  - name: average_speed_mph
+    content_type: Integer
+    sample_value: '38'
+    description: Average speed for the newtork link in miles per hour
+  - name: free_flow_speed_mph
+    content_type: Integer
+    sample_value: '44'
+    description: Free flow speed for the network link in miles per hour.
+  - name: speed_p50_mph
+    content_type: Integer
+    sample_value: '40'
+    description: Median of speeds for the network link in miles per hour.
+  - name: speed_p85_mph
+    content_type: Integer
+    sample_value: '42'
+    description: Percentile 85 of speeds for the network link in miles per hour.
+  - name: speed_p95_mph
+    content_type: Integer
+    sample_value: '45'
+    description: Percentile 95 of speeds for the network link in miles per hour.
+- key: hourly-auto-volume-profile
+  title: Hourly Auto Volume Profile
+  status: active
+  docs: https://documentation.replicahq.com/docs/hourly-auto-volume-profile
+  docs_updated: '2026-05-04'
+  field_count: 12
+  fields:
+  - name: stable_edge_id
+    content_type: String
+    sample_value: '13879083565943480423'
+    description: The matching stable edge id (mapping to Replica's road network) for this segment. This
+      id will match the Places season for Fall of the selected year.
+  - name: comp_stable_edge_id
+    content_type: String
+    sample_value: '11547986894199161929'
+    description: If bidirectional is True for this segment, this field provides the matching stable edge
+      id (mapping to Replica's road network) for the opposing direction of travel. This id will match
+      the Places season for Fall of the selected year.
+  - name: osm_id
+    content_type: String
+    sample_value: '23730229'
+    description: OSM Way ID (version 2020-07-01 for the 2019 data; version 2021-09-01 for the 2021 data;
+      version 2022-12-01 for the 2022 data)
+  - name: street_name
+    content_type: String
+    sample_value: Isabel Avenue
+    description: The common name of the network link if available. Matches the name assigned by OpenStreetMap.
+  - name: highway
+    content_type: String
+    sample_value: trunk
+    description: The classification of the link based on OpenStreetMap data.
+  - name: length
+    content_type: Float
+    sample_value: '229.22'
+    description: The distance (length) of the network link in meters.
+  - name: bidirectional
+    content_type: Boolean
+    sample_value: 'TRUE'
+    description: True if the provided traffic volume is the sum for both directions of an undivided roadway.
+      False if for only one direction.
+  - name: heading
+    content_type: Integer
+    sample_value: '176'
+    description: The heading of the network link.
+  - name: compass_direction
+    content_type: String
+    sample_value: NE
+    description: The compass direction of the network link.
+  - name: geometry
+    content_type: Geography
+    sample_value: LINESTRING(-97.398509 27.662232, -97.398556 27.662034, -97.398517 27.661988)
+    description: The geometry (linestring) for each network link.
+  - name: aadt
+    content_type: Integer
+    sample_value: '4554'
+    description: AADT on the network link. If the metric selected is Single Unit or Combination Truck
+      Volume, this column will reflect the corresponding AADT for Single Unit or Combination Truck and
+      be titled aadt_single_unit or aadt_combination.
+  - name: wkdy_0....wkdy_23
+    content_type: Float
+    sample_value: '321.2'
+    description: One column per hour. The value in each column represents the volume on the network link
+      in the hour bucket. Buckets are expressed as 0-23 and are counted from midnight. If an "Average
+      Weekday" or "Average Weekend Day" is selected for download, the columns will be named wkdy_0...wkdy_23
+      and wknd_0...wknd_23 respectively. The average weekday values are averaged over Monday to Friday;
+      the average weekend values are averaged over Saturday and Sunday. If "All" days of the week are
+      selected for download, the columns will be labelled mon_0...mon_23, tue_0...tue_23, etc.
+- key: network-links
+  title: Network Links
+  status: active
+  docs: https://documentation.replicahq.com/docs/network-links
+  docs_updated: '2025-11-13'
+  field_count: 13
+  fields:
+  - name: stableEdgeId
+    content_type: String
+    sample_value: '1.63807E+19'
+    description: A unique identifier for the network link.
+  - name: startLat
+    content_type: Float
+    sample_value: '34.36907793'
+    description: The latitude of the starting point of the network link, stored in decimal degrees.
+  - name: startLon
+    content_type: Float
+    sample_value: '-101.762211'
+    description: The longitude of the starting point of the network link, stored in decimal degrees.
+  - name: endLat
+    content_type: Float
+    sample_value: '34.36866032'
+    description: The latitude of the end point of the network link, stored in decimal degrees.
+  - name: endLon
+    content_type: Float
+    sample_value: '-101.7656375'
+    description: The longitude of the end point of the network link, stored in decimal degrees.
+  - name: streetName
+    content_type: String
+    sample_value: Sunrise Passage
+    description: The common name of the network link if available. Matches the name assigned by OpenStreetMap.
+  - name: distance
+    content_type: Integer
+    sample_value: '318000'
+    description: The distance (length) of the network link in millimeters.
+  - name: osmid
+    content_type: String
+    sample_value: '21250769'
+    description: The OpenStreetMap ID assigned to the network link.
+  - name: speed
+    content_type: Integer
+    sample_value: '20.69196279'
+    description: The speed limit on the link in miles per hour.
+  - name: flags
+    content_type: String
+    sample_value: '[ALLOWS_CAR, ALLOWS_BIKE, ALLOWS_PEDESTRIAN]'
+    description: A flag denoting what type of vehicles and pedestrian traffic are permitted on the network
+      edge.
+  - name: lanes
+    content_type: Integer
+    sample_value: '2'
+    description: The number of travel lanes on the network link. A "-1" value means we could not parse
+      a lane count from OpenStreetMap (OSM). A "0" value means that the road isn't passable by cars (i.e.,
+      it doesn't have the allows_car flag that appears in the "flags" column in the table).
+  - name: highway
+    content_type: String
+    sample_value: secondary_link
+    description: The classification of the link based on OpenStreetMap data.
+  - name: geometry
+    content_type: String
+    sample_value: LINESTRING(-93.254892 43.986738, -93.254799 43.993382)
+    description: The geometry type for each network link including the start and end latitude and longitude
+      points of the link segment.
+- key: quarter-hourly-speed-profile-per-network-link-annual
+  title: Annual Quarter-Hourly Speed Profiles
+  status: active
+  docs: https://documentation.replicahq.com/docs/quarter-hourly-speed-profile-per-network-link-annual
+  docs_updated: '2026-05-04'
+  field_count: 12
+  fields:
+  - name: stable_edge_id
+    content_type: String
+    sample_value: '6544473848226082043'
+    description: A unique identifier for each road segment.
+  - name: osm_id
+    content_type: String
+    sample_value: '5149900'
+    description: OSM Way ID (version 2021-09-01 for the 2021 data; version 2022-12-01 for the 2022 data)
+  - name: street_name
+    content_type: String
+    sample_value: Scenic Avenue
+    description: The common name of the network link if available. Matches the name assigned by OpenStreetMap.
+  - name: highway
+    content_type: String
+    sample_value: secondary_link
+    description: The classification of the link based on OpenStreetMap data if available.
+  - name: length
+    content_type: Float
+    sample_value: '29.46'
+    description: The length of the network link in meters.
+  - name: lanes
+    content_type: Integer
+    sample_value: '2'
+    description: The number of lanes in the network link.
+  - name: heading
+    content_type: Integer
+    sample_value: '121'
+    description: The heading of the network link.
+  - name: compass_direction
+    content_type: String
+    sample_value: SW
+    description: The compass direction of the network link.
+  - name: geometry
+    content_type: String
+    sample_value: LINESTRING(-122.279327301964 37.8109962748959, -122.279142155032 37.8109143185075, -122.279041013398
+      37.8108588116808)
+    description: The geometry of the network link.
+  - name: speed_limit_mph
+    content_type: Integer
+    sample_value: '45'
+    description: Speed limit of the network link in miles per hour.
+  - name: free_flow_speed_mph
+    content_type: Integer
+    sample_value: '48'
+    description: Free-flow speed for the network link in miles per hour.
+  - name: mon_0, mon_1...mon_95
+    content_type: Float
+    sample_value: '66.2'
+    description: One column per quarter hour. The value in each column represents the speed on the network
+      link in the quarter-hour bucket. Buckets are expressed as 0-95 and are counted from midnight. If
+      a specific day of the week is chosen for download, the column names will reflect the day of week
+      (e.g. mon_0, tue_0, wed_0). If an "Average Weekday" or "Average Weekend Day" is selected for download,
+      the columns will be named wkdy_0...wkdy_95 and wknd_0...wknd_95 respectively. The average weekday
+      values are averaged over Monday to Friday; the average weekend values are averaged over Saturday
+      and Sunday.
+- key: transit
+  title: Transit Trips
+  status: active
+  docs: https://documentation.replicahq.com/docs/transit
+  docs_updated: '2025-11-13'
+  field_count: 40
+  fields:
+  - name: activity_id
+    content_type: String
+    sample_value: '15323941267251300000'
+    description: 'A randomly assigned unique identifier defined for each trip. A trip is defined as travel
+      between two locations with a discrete purpose at the origin and destination. Some intermediate stops
+      with short dwell time may be captured within a single trip. Criteria for this dwell time may vary.
+      Examples of trips: • Home > Work, • Work > Gym, • Shop > Eat, • Home > Starbucks drive-thru > Work'
+  - name: person_id
+    content_type: String
+    sample_value: '4339817784218880000'
+    description: A randomly assigned unique identifier for each person modeled within the synthetic population.
+  - name: household_id
+    content_type: String
+    sample_value: '14408018579505000000'
+    description: A randomly assigned unique identifier for each household modeled within the synthetic
+      population.
+  - name: mode
+    content_type: String
+    sample_value: PUBLIC_TRANSIT
+    description: 'The primary transportation mode used for the trip. A trip is often made up of multiple
+      travel modes, such as a journey to work that includes a walk to a rail station followed by a subway
+      ride. In this case two modes were used by the traveler during their trip, walking and public transit.
+      Only the primary mode of travel across a set of trip segments is included. The primary mode is determined
+      using the following ranking: 1) Public transit, 2) Driving (private auto)/Auto passenger/Taxi/TNC,
+      3) Biking, 4) Walking. This table is limited to the following: • PUBLIC_TRANSIT: Trips that primarily
+      used public transit, such as buses, light rail, and subways'
+  - name: travel_purpose
+    content_type: String
+    sample_value: WORK
+    description: 'The destination activity assigned to a synthetic person. For example, if a person is
+      traveling to work, the purpose of the trip is ''Work,'' whereas if a person is traveling to a restaurant
+      the activity is ''Eat.'' Valid values are: • COMMERCIAL: Trips by medium and heavy trucks for deliveries
+      and other commercial purposes • EAT: Trips to restaurants • HOME: Trips where the destination is
+      the person''s home • LODGING: Trips by visitors to overnight accommodation such as a hotel • MAINTENANCE:
+      Trips to hairdressers, auto shops, banks, and a variety of other locations for the purpose of conducting
+      errands • OTHER: Catch-all category for all other trips not assigned any of the purposes listed
+      herein • RECREATION: Trips to recreational destinations such as parks and swimming pools • REGION_DEPARTURE:
+      Trips by visitors to a port-of-exit, such as an airport, or major train station • SCHOOL: Trips
+      to schools such as community colleges and universities • SHOP: Trips to stores and other commercial
+      centers • SOCIAL: Trips for social activities • STAGE: Trips made by non-residents that start and
+      end outside the region • WORK: Trips where the destination is the person''s workplace • WORK FROM
+      HOME: Trips where a resident is returning home to work (specifically for residents who are working
+      from home on the modeled day). For example, if a person goes out to lunch during the work day, their
+      return trip home will be labeled “work_from_home"'
+  - name: tour_type
+    content_type: String
+    sample_value: COMMUTE
+    description: 'Indicates what type of tour included this trip. Tours are travel events that start at
+      one location and return to that same location. For example, when a person travels to work and returns
+      home, it is a home-based work tour. A tour can have two or more trips. Valid values are: • WORK_BASED:
+      Tours that started and ended at work, excluding commute e.g. Work > Eat > Work • COMMUTE: Tours
+      from home to work and back home including intermediate stops at other destinations e.g. Home > Recreation
+      > Work > Shop > Home • OTHER_HOME_BASED: Tours that started and ended at home, excluding commutes
+      e.g. Home > Shop > Eat > Home'
+  - name: previous_activity_type
+    content_type: String
+    sample_value: HOME
+    description: 'The activity assigned to a synthetic person prior to starting travel. Valid values are:
+      • COMMERCIAL: Trips by medium and heavy trucks for deliveries and other commercial purposes • EAT:
+      Trips to restaurants • HOME: Trips where the destination is the person''s home • LODGING: Trips
+      by visitors to overnight accommodation such as a hotel • MAINTENANCE: Trips to hairdressers, auto
+      shops, banks, and a variety of other locations • OTHER: Catch all category for all other trips not
+      assigned any of the purposes listed herein • RECREATION: Trips to recreational destinations such
+      as parks and swimming pools • REGION_DEPARTURE: Trips by visitors to a port-of-exit, such as an
+      airport, or major train station • SCHOOL: Trips to schools such as community colleges and universities
+      • SHOP: Trips to stores and other commercial centers • SOCIAL: Trips for social activities • STAGE:
+      Trips made by non-residents that start and end outside the region • WORK: Trips where the destination
+      is the person''s workplace'
+  - name: timezone
+    content_type: String
+    sample_value: America/Los_Angeles
+    description: Timezone of the trip’s start location, using standard tz naming conventions.
+  - name: start_time
+    content_type: Time
+    sample_value: 2019-01-10 06:08:00 America/Los_Angeles
+    description: Date and 24-hour time of trip start, reported as yyyy-mm-dd hh:mm:ss timezone.
+  - name: start_local_hour
+    content_type: Integer
+    sample_value: '12'
+    description: Hour of day that the trip started, reported in the local time zone in 24-hour time format.
+      Values in this field range between 0 and 23.
+  - name: end_time
+    content_type: Time
+    sample_value: 2019-01-10 07:11:04 America/Los_Angeles
+    description: Date and 24-hour time of trip end, reported as yyyy-mm-dd hh:mm:ss timezone.
+  - name: end_local_hour
+    content_type: Integer
+    sample_value: '14'
+    description: Hour of day that the trip ended, reported in the local time zone in 24-hour time format.
+      Values in this field range between 0 and 23.
+  - name: duration_minutes
+    content_type: Integer
+    sample_value: '63'
+    description: Duration of trip in minutes, calculated as the difference between the trip start_time
+      and end_time.
+  - name: distance_miles
+    content_type: Float
+    sample_value: '10.79997335'
+    description: Distance in miles measured along the trip route.
+  - name: transit_route_ids
+    content_type: String
+    sample_value: Capital Metro:803
+    description: The ID of the transit route used for a trip. Only applies to trips with mode as “PUBLIC_TRANSIT.”
+      Transit Agency name and Route ID pulled from agency’s GTFS feed.
+  - name: network_link_ids
+    content_type: String
+    sample_value: '10541610554341416382'
+    description: Unique ID assigned to the link (road segment) that the trip is associated with.
+  - name: vehicle_type
+    content_type: String (Len 20)
+    description: NULL for this table
+  - name: vehicle_fuel_type
+    content_type: STRING
+    description: NULL for this table
+  - name: vehicle_fuel_technology
+    content_type: String
+    description: NULL for this table
+  - name: origin_bgrp
+    content_type: String(Len 12)
+    sample_value: '410510010004'
+    description: The US Census Bureau-assigned FIPS code of the block group from which the trip originated.
+  - name: origin_bgrp_lat
+    content_type: Float
+    sample_value: '45.492294'
+    description: Latitude of the geometric centroid for the origin block group, reported in decimal degrees,
+      WGS 84.
+  - name: origin_bgrp_lng
+    content_type: Float
+    sample_value: '-122.65334'
+    description: Longitude of the geometric centroid for the origin block group, reported in decimal degrees,
+      WGS 84.
+  - name: destination_bgrp
+    content_type: String (Len 12)
+    sample_value: '410510079001'
+    description: US Census Bureau-assigned FIPS of the block group in which the trip ended.
+  - name: destination_bgrp_lat
+    content_type: Float
+    sample_value: '45.557407'
+    description: Latitude of the geometric centroid for the destination block group, reported in decimal
+      degrees, WGS 84.
+  - name: destination_bgrp_lng
+    content_type: Float
+    sample_value: '-122.54931'
+    description: Longitude of the geometric centroid for the destination block group, reported in decimal
+      degrees, WGS 84.
+  - name: origin_land_use_l1
+    content_type: String
+    sample_value: residential
+    description: 'The primary land use category of the trip origin. Valid values are: • residential •
+      commercial • mixed_use • industrial • civic_institutional • transportation_utilities • open space
+      • agriculture • other • unknown'
+  - name: origin_land_use_l2
+    content_type: String
+    sample_value: single_family
+    description: 'The secondary land use category of the trip origin. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: destination_land_use_l1
+    content_type: String
+    sample_value: commercial
+    description: 'The primary land use category of the trip destination. Valid values are: • residential
+      • commercial • mixed_use • industrial • civic_institutional • transportation_utilities • open space
+      • agriculture • other • unknown'
+  - name: destination_land_use_l2
+    content_type: String
+    sample_value: non_retail_attraction
+    description: 'The secondary land use category of the trip destination. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: origin_building_use_l1
+    content_type: String
+    sample_value: residential
+    description: 'The primary building use category of the trip origin. Valid values are: • residential
+      • commercial • industrial • civic_institutional • transportation_utilities • open space • agriculture
+      • other • unknown'
+  - name: origin_building_use_l2
+    content_type: String
+    sample_value: single_family
+    description: 'The secondary building use category of the trip origin. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: destination_building_use_l1
+    content_type: String
+    sample_value: commercial
+    description: 'The primary building use category of the trip destination. Valid values are: • residential
+      • commercial • industrial • civic_institutional • transportation_utilities • open space • agriculture
+      • other • unknown'
+  - name: destination_building_use_l2
+    content_type: String
+    sample_value: non_retail_attraction
+    description: 'The secondary building use category of the trip destination. Valid values are: • single_family
+      • multi_family • office • retail • non_retail_attraction • education • healthcare • military • civic_institutional
+      • ​​transportation_utilities • open_space • agriculture • other • unknown'
+  - name: trip_type
+    content_type: String
+    sample_value: II
+    description: 'Indicates whether or not the trip started or ended inside or outside of the core model
+      region. Valid values are: • II: core > core region • IE: core > donut region • EI: donut region
+      > core region • EE: donut region > donut region'
+  - name: agency_name
+    content_type: String
+    sample_value: VTA
+    description: Agency name pulled from agency GTFS feed of target modeled season.
+  - name: route_color
+    content_type: String
+    sample_value: '# AA60BF'
+    description: Route color pulled from agency GTFS feed of target modeled season. This hexademical code
+      represents the color used in public facing material.
+  - name: route_id
+    content_type: String
+    sample_value: VTA:900
+    description: 'Concatenation of: • agency_name • route_id Pulled from agency GTFS feed of target season.'
+  - name: route_long_name
+    content_type: String
+    sample_value: OHLONE/CHYNOWETH-ALMADEN
+    description: Long name of route pulled from agency GTFS feed of target modeled season.
+  - name: route_short_name
+    content_type: String
+    sample_value: '900'
+    description: Short name of route pulled from agency GTFS feed of target modeled season.
+  - name: route_type
+    content_type: integer
+    sample_value: '1'
+    description: Route type pulled from agency GTFS feed of target modeled season, using the google GTFS
+      specifications incremented by one by account for an unknown type. For instance, route_type "3" corresponds
+      to rail and route_type "4" corresponds to bus.
+- key: turning-movement-counts-tmcs
+  title: Turning Movement Counts
+  status: active
+  docs: https://documentation.replicahq.com/docs/turning-movement-counts-tmcs
+  docs_updated: '2025-11-13'
+  field_count: 15
+  fields:
+  - name: intersection_id
+    content_type: String
+    sample_value: 61.5522_-149.5329
+    description: Unique ID of the intersection.
+  - name: intersection_id_geom
+    content_type: Geography
+    sample_value: POINT(-149.5329 61.5522)
+    description: Lat-long of the intersection in WKT POINT() format.
+  - name: turn_maneuver
+    content_type: String
+    sample_value: through
+    description: Maneuver at the intersection, such as left, right, through, u-turn.
+  - name: movement_direction
+    content_type: String
+    sample_value: S_to_W
+    description: Start to end compass direction.
+  - name: inbound_direction
+    content_type: String
+    sample_value: E
+    description: Inbound compass direction.
+  - name: inbound_heading
+    content_type: Integer
+    sample_value: '87'
+    description: Heading of the inbound road described as degrees from north (0-360).
+  - name: turning_movement
+    content_type: String
+    sample_value: NBL
+    description: Turning movement as 'NBL' or 'NBT'.
+  - name: state
+    content_type: String
+    sample_value: AK
+    description: US state abbreviation indicating location of intersection.
+  - name: inbound_stable_edge_id
+    content_type: String
+    sample_value: '10908660954266870460'
+    description: A unique identifier for the network link.
+  - name: inbound_street_name
+    content_type: String
+    sample_value: Kenai Spur Highway
+    description: The common name of the network link if available. Matches the name assigned by OpenStreetMap.
+  - name: outbound_osm_id
+    content_type: String
+    sample_value: '792610357'
+    description: A unique identifier for the OSM way or supersegment ID. Can be converted to a set of
+      stable edge IDs.
+  - name: outbound_street_name
+    content_type: String
+    sample_value: West Dimond Boulevard
+    description: The common name of the network link if available. Matches the name assigned by OpenStreetMap.
+  - name: hour
+    content_type: Integer
+    sample_value: '12'
+    description: Hour of day that the trip started, reported in the local time zone in 24-hour time format.
+      Values in this field range between 0 and 23.
+  - name: day
+    content_type: String
+    sample_value: MON
+    description: Day of the week
+  - name: count
+    content_type: Integer
+    sample_value: '522'
+    description: TMC counts scaled from observed numbers to match total volumes along network links.
+- key: weekly-spend-by-merchant-location
+  title: '[Discontinued] Weekly Spend (by merchant location)'
+  status: discontinued
+  docs: https://documentation.replicahq.com/docs/weekly-spend-by-merchant-location
+  docs_updated: '2025-11-13'
+  field_count: 5
+  fields:
+  - name: geo_id
+    content_type: Integer
+    sample_value: '36005014100'
+    description: The GEOID of the corresponding row's geography, as defined by the US Census Bureau.
+  - name: geo_name
+    content_type: String
+    sample_value: 141 (Bronx, NY)
+    description: The name corresponding to the row’s geography, as defined by the US Census Bureau or
+      specified by the user.
+  - name: week/month_starting
+    content_type: Date
+    sample_value: '2022-06-13'
+    description: The first day of the week (Saturday) or month of the corresponding row’s data, depending
+      on whether monthly or weekly data was selected.
+  - name: population
+    content_type: Integer
+    sample_value: '5756'
+    description: The total population in the geography selected.
+  - name: category_spend_total
+    content_type: Float
+    sample_value: '42157.48438'
+    description: 'The total consumer spend in ": { " in a given week across the following categories:
+      • Airline/hospitality/car rental • Entertainment/recreation • Gas stations/parking/taxis/tolls •
+      Grocery stores • Restaurants/bars • Retail Note: Spend by merchant estimates only include in-person
+      spending.'

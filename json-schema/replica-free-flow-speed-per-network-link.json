@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/replica/refs/heads/main/json-schema/replica-free-flow-speed-per-network-link.json",
+  "title": "Annual Speeds per Network Link",
+  "description": "One row of Replica's \"Annual Speeds per Network Link\" dataset. Derived from the published schema table at https://documentation.replicahq.com/docs/free-flow-speed-per-network-link.",
+  "x-source": "https://documentation.replicahq.com/docs/free-flow-speed-per-network-link",
+  "x-generated": "2026-08-02",
+  "x-method": "derived",
+  "x-status": "active",
+  "type": "object",
+  "properties": {
+    "stable_edge_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A unique identifier for each road segment.",
+      "examples": [
+        "6544473848226082043"
+      ]
+    },
+    "osm_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "OSM Way ID (version 2021-09-01 for the 2021 data; version 2022-12-01 for the 2022 data)",
+      "examples": [
+        "5149900"
+      ]
+    },
+    "street_name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The common name of the network link if available. Matches the name assigned by OpenStreetMap.",
+      "examples": [
+        "Scenic Avenue"
+      ]
+    },
+    "highway": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The classification of the link based on OpenStreetMap data if available.",
+      "examples": [
+        "secondary_link"
+      ]
+    },
+    "length": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "The length of the network link in meters.",
+      "examples": [
+        "29.46"
+      ]
+    },
+    "lanes": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The number of lanes in the network link.",
+      "examples": [
+        "2"
+      ]
+    },
+    "heading": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The heading of the network link.",
+      "examples": [
+        "121"
+      ]
+    },
+    "compass_direction": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The compass direction of the network link.",
+      "examples": [
+        "SW"
+      ]
+    },
+    "geometry": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Orientation of speed relative to OSM way (True: parallel, False: antiparallel).",
+      "examples": [
+        "LINESTRING(-122.819859 45.52401, -122.821542 45.524663, -122.82234 45.524944, -122.833081 45.529006)"
+      ]
+    },
+    "speed_limit_mph": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Speed limit of the network link in miles per hour",
+      "examples": [
+        "45"
+      ]
+    },
+    "average_speed_mph": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Average speed for the newtork link in miles per hour",
+      "examples": [
+        "38"
+      ]
+    },
+    "free_flow_speed_mph": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Free flow speed for the network link in miles per hour.",
+      "examples": [
+        "44"
+      ]
+    },
+    "speed_p50_mph": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Median of speeds for the network link in miles per hour.",
+      "examples": [
+        "40"
+      ]
+    },
+    "speed_p85_mph": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Percentile 85 of speeds for the network link in miles per hour.",
+      "examples": [
+        "42"
+      ]
+    },
+    "speed_p95_mph": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Percentile 95 of speeds for the network link in miles per hour.",
+      "examples": [
+        "45"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

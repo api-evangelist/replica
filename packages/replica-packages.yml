@@ -1,0 +1,69 @@
+generated: '2026-08-02'
+method: searched
+source: https://github.com/replicahq
+description: >-
+  Replica ships no client SDK, because it publishes no public developer API. The packages below are
+  first-party open-source libraries published by the Replica GitHub organization (several inherited
+  from the Sidewalk Labs project the company was spun out of). They are modelling/data-tooling
+  libraries, NOT API client libraries - no `SDKs` pointer is wired in apis.yml for that reason.
+registries_probed:
+  - {registry: pypi, result: 'doppelganger found; no replica/replicahq-namespaced client package'}
+  - {registry: npm, result: '@replicahq scope and replicahq/replica-sdk names return 404'}
+  - {registry: crates.io, result: 'openlr-decoder not published to crates.io (GitHub source only)'}
+  - {registry: rubygems, result: none found}
+  - {registry: nuget, result: none found}
+  - {registry: maven-central, result: none found}
+  - {registry: pkg.go.dev, result: none found}
+  - {registry: packagist, result: none found}
+packages:
+  - language: python
+    registry: pypi
+    name: doppelganger
+    url: https://pypi.org/project/doppelganger/
+    source: https://github.com/replicahq/doppelganger
+    install: pip install doppelganger
+    version: 0.1.4
+    last_published: '2017-11-10'
+    license: Apache-2.0
+    official: true
+    kind: research-library
+    description: A Python package of tools to support population synthesizers - the population-synthesis
+      technique underlying Replica's synthetic population. Originated in the Sidewalk Labs project that
+      became Replica; the canonical repository now sits in the replicahq GitHub organization.
+    note: PyPI releases stop at 2017 (pre-spinout); the GitHub repository is the maintained source.
+  - language: rust
+    registry: github
+    name: openlr-decoder
+    url: https://github.com/replicahq/openlr-decoder
+    install: cargo add --git https://github.com/replicahq/openlr-decoder
+    license: MIT
+    official: true
+    kind: library
+    description: Fast OpenLR location-reference decoder - map-agnostic road location referencing, used
+      for conflating third-party traffic data onto Replica's network links.
+    note: not published to crates.io; source distribution only.
+  - language: typescript
+    registry: github
+    name: sqlrooms-bigquery
+    url: https://github.com/replicahq/sqlrooms-bigquery
+    install: not published to npm
+    official: true
+    kind: library
+    description: BigQuery IO utilities for SQLRooms applications - browser-side analytics over BigQuery,
+      the delivery path Replica documents as "direct database access".
+  - language: typescript
+    registry: github
+    name: sqlrooms-bq-earthquakes-example
+    url: https://github.com/replicahq/sqlrooms-bq-earthquakes-example
+    official: true
+    kind: example
+    description: Interactive visualization example built on BigQuery, DuckDB-WASM and SQLRooms.
+sdk_count: 0
+sdk_note: No first-party API client library exists. Replica has no public API to write one against.
+x-evidence:
+  fetched: '2026-08-02'
+  github_org: https://github.com/replicahq
+  public_repos: 28
+  first_party_repos: 6
+  note: the remaining 22 public repos are forks of upstream OSS (dask, prefect, graphhopper, h3-py,
+    pomegranate, bitnami-charts, prefect-mcp-server and similar) and are not catalogued as packages.

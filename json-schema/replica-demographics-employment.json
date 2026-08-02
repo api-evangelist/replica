@@ -1,0 +1,404 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/replica/refs/heads/main/json-schema/replica-demographics-employment.json",
+  "title": "Demographics and Employment",
+  "description": "One row of Replica's \"Demographics and Employment\" dataset. Derived from the published schema table at https://documentation.replicahq.com/docs/demographics-employment.",
+  "x-source": "https://documentation.replicahq.com/docs/demographics-employment",
+  "x-generated": "2026-08-02",
+  "x-method": "derived",
+  "x-status": "active",
+  "type": "object",
+  "properties": {
+    "household_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Unique identifier of a household.",
+      "examples": [
+        "14102589208980400000"
+      ]
+    },
+    "person_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Unique identifier of a person.",
+      "examples": [
+        "14408018579505000000"
+      ]
+    },
+    "BLOCKGROUP": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The US Census Bureau-assigned FIPS code of the census block group containing the housing unit based on the decennial census 2010.",
+      "examples": [
+        "410050201001"
+      ]
+    },
+    "BLOCKGROUP_work": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The US Census Bureau-assigned FIPS code of the census block group containing the person's workplace (for employed persons only.)",
+      "examples": [
+        "410050227021"
+      ]
+    },
+    "BLOCKGROUP_school": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The US Census Bureau-assigned FIPS code of the census block group containing the person's school (for students only).",
+      "examples": [
+        "410510063001"
+      ]
+    },
+    "TRACT": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The US Census Bureau-assigned FIPS code of the census tract containing the housing unit.",
+      "examples": [
+        "41005020100"
+      ]
+    },
+    "TRACK_work": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The US Census Bureau-assigned FIPS code of the census tract containing the person's workplace (for employed persons only).",
+      "examples": [
+        "41005022702"
+      ]
+    },
+    "TRACT_school": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The US Census Bureau-assigned FIPS code of the census tract containing the person's school (for students only).",
+      "examples": [
+        "41051006300"
+      ]
+    },
+    "age_group*": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Age range a person falls within. Value ranges include: \u2022 lte_4 \u2022 5_14 \u2022 15_17 \u2022 18_24 \u2022 25_34 \u2022 35_64 \u2022 65_plus",
+      "examples": [
+        "18_24"
+      ]
+    },
+    "age": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Age, in years old, assigned to the person.",
+      "examples": [
+        "19"
+      ]
+    },
+    "sex": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Sex assigned to the person, male (M) or female (F).",
+      "examples": [
+        "M"
+      ]
+    },
+    "race": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Race assigned to the person. Valid values include: \u2022 american_indian_alaska_native \u2022 asian \u2022 black_african_american \u2022 hawaiin_pacific \u2022 other_race_alone \u2022 two_or_more_races \u2022 white",
+      "examples": [
+        "white"
+      ]
+    },
+    "ethnicity": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Ethnicity of a person. Valid values include: \u2022 not_hispanic_or_latino \u2022 hispanic_or_latino",
+      "examples": [
+        "not_hispanic_or_latino"
+      ]
+    },
+    "individual_income_group": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Range a person's annual income falls within. Value ranges include: \u2022 lte_0 \u2022 0_20000 \u2022 20000_40000 \u2022 40000_80000 \u2022 80000_100000 \u2022 100000_plus",
+      "examples": [
+        "0_20000"
+      ]
+    },
+    "individual_income": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Total annual income of a person. Note: Some individuals have negative income levels. Negative income is typically associated with business or capital loss that\u2019s subsequently allocated to the individual taxpayer. This comes from Census data.",
+      "examples": [
+        "7500"
+      ]
+    },
+    "employment": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Employment status of a person. Valid values include: \u2022 employed \u2022 notinlf \u2022 under_16 \u2022 unemployed",
+      "examples": [
+        "employed"
+      ]
+    },
+    "education*": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Education level of a person. Valid values include: \u2022 advanced_degree \u2022 bachelors_degree \u2022 high_school \u2022 k_12 \u2022 no_school \u2022 some_college \u2022 under_3",
+      "examples": [
+        "k_12"
+      ]
+    },
+    "school_grade_attending*": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Current grade level assigned to a person. Valid values include: \u2022 graduate \u2022 kindergarten \u2022 not_attending_school \u2022 school \u2022 undergraduate",
+      "examples": [
+        "not_attending_school"
+      ]
+    },
+    "industry*": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Industry sector a person works within, reported in NAICS code. For a list of NAICS codes see: https://www.naics.com/search-naics-codes-by-industry.",
+      "examples": [
+        "naics51"
+      ]
+    },
+    "household_role*": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The role of the person in the household. Valid values include: \u2022 child \u2022 GQ \u2022 head_of_household \u2022 immobile_GQ \u2022 non_relative \u2022 relative \u2022 spouse",
+      "examples": [
+        "child"
+      ]
+    },
+    "subfamily_number*": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Number assigned to the subfamily that the person belongs to in a household.",
+      "examples": [
+        "1"
+      ]
+    },
+    "subfamily_relationship*": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Relationship of a person within the subfamily. Valid values include: \u2022 child \u2022 husband/wife_no_children \u2022 husband/wife_with_children \u2022 parent_with_child \u2022 N/A",
+      "examples": [
+        "parent_with_child"
+      ]
+    },
+    "commute_mode": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Typical commute mode used by a person. Valid values include: \u2022 biking \u2022 carpool \u2022 driving \u2022 not_working \u2022 transit \u2022 walking \u2022 worked_from_home",
+      "examples": [
+        "driving"
+      ]
+    },
+    "tenure*": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Tenure of household. Valid values include: \u2022 owner \u2022 renter \u2022 GQ",
+      "examples": [
+        "owner"
+      ]
+    },
+    "migration*": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Indicates mobility status (if the household has lived in the same unit 1 year ago). Valid values include: \u2022 N/A (Lived in house <1 year; Also applies to group quarters) \u2022 same_house (non-movers) \u2022 outside_us \u2022 within_us",
+      "examples": [
+        "same_house"
+      ]
+    },
+    "household_size": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Number of persons that make up the household. Valid values include: \u2022 1_person \u2022 1_person_group_quarters \u2022 2_person \u2022 3_person \u2022 4_person \u2022 5_person \u2022 6_person \u2022 7_plus_person",
+      "examples": [
+        "3_person"
+      ]
+    },
+    "household_income_group*": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Income range that the total income of the household falls within. Valid values include: \u2022 lte_10000 \u2022 10000_40000 \u2022 40000_75000 \u2022 75000_125000 \u2022 125000_plus",
+      "examples": [
+        "125000_plus"
+      ]
+    },
+    "household_income": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Total income of the household.",
+      "examples": [
+        "408500"
+      ]
+    },
+    "family_structure*": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Household family structure. Valid values include: \u2022 family_single \u2022 GQ \u2022 living_alone \u2022 married_couple \u2022 nonfamily_single",
+      "examples": [
+        "married_couple"
+      ]
+    },
+    "vehicles": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Number of vehicles owned by a household. Valid values include: \u2022 zero \u2022 1 \u2022 2 \u2022 3_plus \u2022 GQ",
+      "examples": [
+        "3_plus"
+      ]
+    },
+    "building_type*": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Indicates the unit in the household\u2019s structure. Valid values include: \u2022 mobile (mobile home, trailer, boat, RV, or van) \u2022 single_family (one-family home, attached or detached) \u2022 several_units (2-4 apartments) \u2022 multiple_units (5+ apartments) \u2022 GQ_structure (group quarters)",
+      "examples": [
+        "mobile"
+      ]
+    },
+    "resident_type": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Indicates whether or not the person is a resident of the region. Valid values include: \u2022 core: A resident of the core region. \u2022 donut: A resident of the surrounding counties who work or go to school in the core region. \u2022 visitor: A person who does not normally reside in the core or donut region who enters and/or exits the region via a \u2018port of entry\u2019 (airport, freeway crossing).",
+      "examples": [
+        "core"
+      ]
+    },
+    "language*": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Indicates the household language. Valid values include: \u2022 english \u2022 spanish \u2022 indo-european \u2022 asian-pacific \u2022 other \u2022 GQ_language",
+      "examples": [
+        "english"
+      ]
+    },
+    "lat*": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Latitude of the block group centroid representing the home location, reported in decimal degrees, WGS 84.",
+      "examples": [
+        "37.434211"
+      ]
+    },
+    "lng*": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Longitude of the block group centroid representing the home location, reported in decimal degrees, WGS 84.",
+      "examples": [
+        "-122.16801"
+      ]
+    },
+    "lat_work*": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Latitude of the block group centroid representing the work location, reported in decimal degrees, WGS 84 (for employed persons only).",
+      "examples": [
+        "37.434211"
+      ]
+    },
+    "lng_work*": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Longitude of the block group centroid representing the work location, reported in decimal degrees, WGS 84 (for employed persons only).",
+      "examples": [
+        "-122.16801"
+      ]
+    },
+    "lat_school*": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Latitude of the block group centroid representing the school location, reported in decimal degrees, WGS 84 (for students only).",
+      "examples": [
+        "37.434211"
+      ]
+    },
+    "lng_school*": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Longitude of the block group centroid representing the school location, reported in decimal degrees, WGS 84 (for students only).",
+      "examples": [
+        "-122.16801"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

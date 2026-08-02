@@ -1,0 +1,78 @@
+generated: '2026-08-02'
+method: probed
+source: live HTTP probes
+description: >-
+  No /.well-known/ discovery document is published on any Replica host. Recorded so a later re-run
+  does not repeat the probe blind. Note the false-positive trap on replicahq.com: the marketing site
+  is a client-rendered single-page app whose catch-all answers HTTP 200 with the same HTML shell for
+  every unknown path - including every /.well-known/* path, /llms.txt and /openapi.json. Those 200s
+  are NOT documents; each body was inspected and begins with <!DOCTYPE html>. No apis.yml WellKnown
+  pointer is wired because nothing was found.
+documents_found: 0
+hosts:
+  - host: https://replicahq.com
+    catch_all: spa-html-200
+    documents:
+      - {path: /.well-known/security.txt, status: 200, body: html-spa-shell, valid: false}
+      - {path: /.well-known/agent-card.json, status: 200, body: html-spa-shell, valid: false}
+      - {path: /.well-known/agent.json, status: 200, body: html-spa-shell, valid: false}
+      - {path: /llms.txt, status: 200, body: html-spa-shell, valid: false}
+      - {path: /openapi.json, status: 200, body: html-spa-shell, valid: false}
+      - {path: /robots.txt, status: 200, body: text/plain, valid: true, note: 'allows all; points at
+          https://www.replicahq.com/sitemap.xml'}
+      - {path: /sitemap.xml, status: 200, body: application/xml, valid: true, note: 46 URLs}
+  - host: https://documentation.replicahq.com
+    catch_all: readme-io-404
+    documents:
+      - {path: /llms.txt, status: 200, body: text/plain, valid: true, file: ../llms/replica-llms.txt}
+      - {path: /llms-full.txt, status: 404}
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /openapi.json, status: 404}
+      - {path: /openapi.yaml, status: 404}
+      - {path: /swagger.json, status: 404}
+      - {path: /api-docs, status: 404}
+      - {path: /reference, status: 404, note: 'ReadMe.io API-reference section is not enabled - Replica
+          publishes data documentation only'}
+      - {path: /sitemap.xml, status: 404}
+  - host: https://studio.replicahq.com
+    catch_all: nextjs-404
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /openapi.json, status: 404}
+      - {path: /llms.txt, status: 404}
+  - host: https://api.studio.replicahq.com
+    catch_all: json-404
+    note: 'private backend for Replica Studio. Every /api/v1/* path answers 401 Unauthorized and sets
+      an Express session cookie (replica.sid, Domain=studio.replicahq.com); every other path answers a
+      JSON 404 {"status":404,"message":"Path X not supported.","requestId":"..."}. Undocumented and
+      not offered as a developer API.'
+    documents:
+      - {path: /openapi.json, status: 404}
+      - {path: /openapi.yaml, status: 404}
+      - {path: /swagger.json, status: 404}
+      - {path: /v1/openapi.json, status: 404}
+      - {path: /api/v1/openapi.json, status: 401}
+      - {path: /api-docs, status: 404}
+      - {path: /docs, status: 404}
+      - {path: /redoc, status: 404}
+      - {path: /graphql, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+hosts_that_do_not_resolve:
+  - docs.replicahq.com
+  - api.replicahq.com
+  - app.replicahq.com
+  - status.replicahq.com
+  - trust.replicahq.com
+x-evidence:
+  fetched: '2026-08-02'
+  user_agent: desktop Chrome UA

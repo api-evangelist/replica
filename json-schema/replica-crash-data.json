@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/replica/refs/heads/main/json-schema/replica-crash-data.json",
+  "title": "Crash Data",
+  "description": "One row of Replica's \"Crash Data\" dataset. Derived from the published schema table at https://documentation.replicahq.com/docs/crash-data.",
+  "x-source": "https://documentation.replicahq.com/docs/crash-data",
+  "x-generated": "2026-08-02",
+  "x-method": "derived",
+  "x-status": "active",
+  "type": "object",
+  "properties": {
+    "`rank`": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Row rank, 1-based. Rows are sorted by crash date, newest first. Not a stable crash ID; purely the position in this export.",
+      "examples": [
+        "`1`"
+      ]
+    },
+    "`date`": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date",
+      "description": "Date the crash occurred, formatted `MM/DD/YYYY`. Local time.",
+      "examples": [
+        "`12/29/2024`"
+      ]
+    },
+    "`time`": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Hour the crash occurred, rendered as a 12-hour clock label from an integer hour (0\u201323). Local time.",
+      "examples": [
+        "`9:00 PM`"
+      ]
+    },
+    "`severity`": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Computed summary of the crash's outcomes, built from the underlying fatality and KABCO-based injury counts. Lists only the non-zero categories.",
+      "examples": [
+        "`1 Fatality, 1 A Injury, 1 C Injury`"
+      ]
+    },
+    "`collision_type`": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Manner of collision.",
+      "examples": [
+        "`Front-to-front`"
+      ]
+    },
+    "`mode`": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Comma-separated list of transportation modes involved in the crash.",
+      "examples": [
+        "`Pedestrian, Motor Vehicle`"
+      ]
+    },
+    "`contributing_factor`": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Primary reported contributing factor.",
+      "examples": [
+        "`None Noted`"
+      ]
+    },
+    "`location_type`": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Type of location where the crash occurred.",
+      "examples": [
+        "`On Roadway`"
+      ]
+    },
+    "`street`": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Primary street name of the crash location.",
+      "examples": [
+        "`MU- WESTERN AVE`"
+      ]
+    },
+    "`cross_street_name`": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Nearest cross street of the crash location.",
+      "examples": [
+        "`26TH ST`"
+      ]
+    },
+    "`highway`": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Whether the crash occurred on a highway.",
+      "examples": [
+        "`Yes`"
+      ]
+    },
+    "`road_classification`": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Functional road classification.",
+      "examples": [
+        "`Principal Arterial - Other`"
+      ]
+    },
+    "`road_surface_condition`": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Road surface condition at time of crash.",
+      "examples": [
+        "`Wet`"
+      ]
+    },
+    "`light_condition`": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Lighting condition at time of crash.",
+      "examples": [
+        "`Dark - Lighted`"
+      ]
+    },
+    "`weather_condition`": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Weather condition at time of crash.",
+      "examples": [
+        "`Rain`"
+      ]
+    },
+    "`jurisdiction`": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Reporting jurisdiction.",
+      "examples": [
+        "`State Highway Agency`"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

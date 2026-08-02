@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/replica/refs/heads/main/json-schema/replica-turning-movement-counts-tmcs.json",
+  "title": "Turning Movement Counts",
+  "description": "One row of Replica's \"Turning Movement Counts\" dataset. Derived from the published schema table at https://documentation.replicahq.com/docs/turning-movement-counts-tmcs.",
+  "x-source": "https://documentation.replicahq.com/docs/turning-movement-counts-tmcs",
+  "x-generated": "2026-08-02",
+  "x-method": "derived",
+  "x-status": "active",
+  "type": "object",
+  "properties": {
+    "intersection_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Unique ID of the intersection.",
+      "examples": [
+        "61.5522_-149.5329"
+      ]
+    },
+    "intersection_id_geom": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Lat-long of the intersection in WKT POINT() format.",
+      "examples": [
+        "POINT(-149.5329 61.5522)"
+      ]
+    },
+    "turn_maneuver": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Maneuver at the intersection, such as left, right, through, u-turn.",
+      "examples": [
+        "through"
+      ]
+    },
+    "movement_direction": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Start to end compass direction.",
+      "examples": [
+        "S_to_W"
+      ]
+    },
+    "inbound_direction": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Inbound compass direction.",
+      "examples": [
+        "E"
+      ]
+    },
+    "inbound_heading": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Heading of the inbound road described as degrees from north (0-360).",
+      "examples": [
+        "87"
+      ]
+    },
+    "turning_movement": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Turning movement as 'NBL' or 'NBT'.",
+      "examples": [
+        "NBL"
+      ]
+    },
+    "state": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "US state abbreviation indicating location of intersection.",
+      "examples": [
+        "AK"
+      ]
+    },
+    "inbound_stable_edge_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A unique identifier for the network link.",
+      "examples": [
+        "10908660954266870460"
+      ]
+    },
+    "inbound_street_name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The common name of the network link if available. Matches the name assigned by OpenStreetMap.",
+      "examples": [
+        "Kenai Spur Highway"
+      ]
+    },
+    "outbound_osm_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A unique identifier for the OSM way or supersegment ID. Can be converted to a set of stable edge IDs.",
+      "examples": [
+        "792610357"
+      ]
+    },
+    "outbound_street_name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The common name of the network link if available. Matches the name assigned by OpenStreetMap.",
+      "examples": [
+        "West Dimond Boulevard"
+      ]
+    },
+    "hour": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Hour of day that the trip started, reported in the local time zone in 24-hour time format. Values in this field range between 0 and 23.",
+      "examples": [
+        "12"
+      ]
+    },
+    "day": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Day of the week",
+      "examples": [
+        "MON"
+      ]
+    },
+    "count": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "TMC counts scaled from observed numbers to match total volumes along network links.",
+      "examples": [
+        "522"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

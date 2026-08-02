@@ -1,0 +1,332 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/replica/refs/heads/main/json-schema/replica-active-transportation.json",
+  "title": "Active Transportation Trips",
+  "description": "One row of Replica's \"Active Transportation Trips\" dataset. Derived from the published schema table at https://documentation.replicahq.com/docs/active-transportation.",
+  "x-source": "https://documentation.replicahq.com/docs/active-transportation",
+  "x-generated": "2026-08-02",
+  "x-method": "derived",
+  "x-status": "active",
+  "type": "object",
+  "properties": {
+    "activity_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A randomly assigned unique identifier defined for each trip. A trip is defined as travel between two locations with a discrete purpose at the origin and destination. Some intermediate stops with short dwell time may be captured within a single trip. Criteria for this dwell time may vary. Examples of trips: \u2022 Home > Work, \u2022 Work > Gym, \u2022 Shop > Eat, \u2022 Home > Starbucks drive-thru > Work",
+      "examples": [
+        "15323941267251300000"
+      ]
+    },
+    "person_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A randomly assigned unique identifier for each person modeled within the synthetic population.",
+      "examples": [
+        "4339817784218880000"
+      ]
+    },
+    "household_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A randomly assigned unique identifier for each household modeled within the synthetic population.",
+      "examples": [
+        "14408018579505000000"
+      ]
+    },
+    "mode": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Primary transportation mode used for the trip. A trip is often made up of multiple travel modes, such as a journey to work that includes a walk to a rail station followed by a subway ride. In this case two modes were used by the traveler during their trip, walking and public transit. Only the primary mode of travel across a set of trip segments is included. The primary mode is determined using the following ranking: 1) Public transit, 2) Driving (private auto)/Auto passenger/Taxi/TNC, 3) Biking, 4) Walking. This table is limited to the following: \u2022 BIKING: Trips made by people biking. Replica does not model scooter trips and does not separate out e-bike trips \u2022 WALKING: Trips made by people walking",
+      "examples": [
+        "WALKING"
+      ]
+    },
+    "travel_purpose": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The destination activity assigned to a synthetic person. For example, if a person is traveling to work, the purpose of the trip is 'Work,' whereas if a person is traveling to a restaurant the activity is 'Eat.' Valid values are: \u2022 COMMERCIAL: Trips by medium and heavy trucks for deliveries and other commercial purposes \u2022 EAT: Trips to restaurants \u2022 HOME: Trips where the destination is the person's home \u2022 LODGING: Trips by visitors to overnight accommodation such as a hotel \u2022 MAINTENANCE: Trips to hairdressers, auto shops, banks, and a variety of other locations for the purpose of conducting errands \u2022 OTHER: Catch-all category for all other trips not assigned any of the purposes listed herein \u2022 RECREATION: Trips to recreational destinations such as parks and swimming pools \u2022 REGION_DEPARTURE: Trips by visitors to a port-of-exit, such as an airport, or major train station \u2022 SCHOOL: Trips to schools such as community colleges and universities \u2022 SHOP: Trips to stores and other commercial centers \u2022 SOCIAL: Trips for social activities \u2022 STAGE: Trips made by non-residents that start and end outside the region \u2022 WORK: Trips where the destination is the person's workplace \u2022 WORK FROM HOME: Trips where a resident is returning home to work (specifically for residents who are working from home on the modeled day). For example, if a person goes out to lunch during the work day, their return trip home will be labeled \u201cwork_from_home\"",
+      "examples": [
+        "WORK"
+      ]
+    },
+    "tour_type": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Indicates what type of tour that included this trip. Tours are travel events that start at one location and return to that same location. For example, when a person travels to work and returns home, this is a home-based work tour. A tour can have two or more trips. Valid options are: \u2022 WORK_BASED: Tours that started and ended at work, excluding commute. For example: Work > Eat > Work. \u2022 COMMUTE: Tours from home to work and back home. Also includes intermediate stops at other destinations. For example: Home > Recreation > Work > Shop > Home \u2022 OTHER_HOME_BASED: Tours that started and ended at home, excluding commutes. For example: Home > Shop > Eat > Home",
+      "examples": [
+        "COMMUTE"
+      ]
+    },
+    "previous_activity_type": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The activity assigned to a synthetic person prior to starting travel. Valid values are: \u2022 COMMERCIAL: Trips by medium and heavy trucks for deliveries and other commercial purposes \u2022 EAT: Trips to restaurants \u2022 HOME: Trips where the destination is the person's home \u2022 LODGING: Trips by visitors to overnight accommodation such as a hotel \u2022 MAINTENANCE: Trips to hairdressers, auto shops, banks, and a variety of other locations \u2022 OTHER: Catch all category for all other trips not assigned any of the purposes listed herein \u2022 RECREATION: Trips to recreational destinations such as parks and swimming pools \u2022 REGION_DEPARTURE: Trips by visitors to a port-of-exit, such as an airport, or major train station \u2022 SCHOOL: Trips to schools such as community colleges and universities \u2022 SHOP: Trips to stores and other commercial centers \u2022 SOCIAL: Trips for social activities \u2022 STAGE: Trips made by non-residents that start and end outside the region \u2022 WORK: Trips where the destination is the person's workplace",
+      "examples": [
+        "HOME"
+      ]
+    },
+    "timezone": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Timezone of the trip\u2019s start location, using standard tz naming conventions.",
+      "examples": [
+        "America/Los_Angeles"
+      ]
+    },
+    "start_time": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Date and 24-hour time of trip start, reported as yyyy-mm-dd hh:mm:ss timezone.",
+      "examples": [
+        "2019-01-10 06:08:00 America/Los_Angeles"
+      ]
+    },
+    "start_local_hour": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Hour of day that the trip started, reported in the local time zone in 24-hour time format. Values in this field range between 0 and 23.",
+      "examples": [
+        "12"
+      ]
+    },
+    "end_time": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Date and 24-hour time of trip end, reported as yyyy-mm-dd hh:mm:ss timezone.",
+      "examples": [
+        "2019-01-10 07:11:04 America/Los_Angeles"
+      ]
+    },
+    "end_local_hour": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Hour of day that the trip ended, reported in the local time zone in 24-hour time format. Values in this field range between 0 and 23.",
+      "examples": [
+        "14"
+      ]
+    },
+    "duration_minutes": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Duration of trip in minutes, calculated as the difference between the trip start_time and end_time.",
+      "examples": [
+        "63"
+      ]
+    },
+    "distance_miles": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Distance in miles measured along the trip route.",
+      "examples": [
+        "10.7999733493896"
+      ]
+    },
+    "transit_route_ids": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "NULL for this table"
+    },
+    "network_link_ids": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Unique ID assigned to the link (road segment) that the trip is associated with.",
+      "examples": [
+        "10541610554341416382"
+      ]
+    },
+    "vehicle_type": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "NULL for this table"
+    },
+    "vehicle_fuel_type": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "NULL for this table"
+    },
+    "vehicle_fuel_technology": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "NULL for this table"
+    },
+    "origin_bgrp": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The US Census Bureau-assigned FIPS code of the block group from which the trip originated.",
+      "examples": [
+        "410510010004"
+      ]
+    },
+    "origin_bgrp_lat": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Latitude of the geometric centroid for the origin block group, reported in decimal degrees, WGS 84.",
+      "examples": [
+        "45.492294"
+      ]
+    },
+    "origin_bgrp_lng": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Longitude of the geometric centroid for the origin block group, reported in decimal degrees, WGS 84.",
+      "examples": [
+        "-122.65334"
+      ]
+    },
+    "destination_bgrp": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "US Census Bureau-assigned FIPS of the block group in which the trip ended.",
+      "examples": [
+        "410510079001"
+      ]
+    },
+    "destination_bgrp_lat": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Latitude of the geometric centroid for the destination block group, reported in decimal degrees, WGS 84.",
+      "examples": [
+        "45.557407"
+      ]
+    },
+    "destination_bgrp_lng": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Longitude of the geometric centroid for the destination block group, reported in decimal degrees, WGS 84.",
+      "examples": [
+        "-122.54931"
+      ]
+    },
+    "origin_land_use_l1": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The primary land use category of the trip origin. Valid options are: \u2022 residential \u2022 commercial \u2022 mixed_use \u2022 industrial \u2022 civic_institutional \u2022 transportation_utilities \u2022 open space \u2022 agriculture \u2022 other \u2022 unknown",
+      "examples": [
+        "residential"
+      ]
+    },
+    "origin_land_use_l2": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The secondary land use category of the trip origin. Valid options are: \u2022 single_family \u2022 multi_family \u2022 office \u2022 retail \u2022 non_retail_attraction \u2022 education \u2022 healthcare \u2022 military \u2022 civic_institutional \u2022 \u200b\u200btransportation_utilities \u2022 open_space \u2022 agriculture \u2022 other \u2022 unknown",
+      "examples": [
+        "single_family"
+      ]
+    },
+    "destination_land_use_l1": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The primary land use category of the trip destination. Valid options are: \u2022 residential \u2022 commercial \u2022 mixed_use \u2022 industrial \u2022 civic_institutional \u2022 transportation_utilities \u2022 open space \u2022 agriculture \u2022 other \u2022 unknown",
+      "examples": [
+        "commercial"
+      ]
+    },
+    "destination_land_use_l2": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The secondary land use category of the trip destination. Valid options are: \u2022 single_family \u2022 multi_family \u2022 office \u2022 retail \u2022 non_retail_attraction \u2022 education \u2022 healthcare \u2022 military \u2022 civic_institutional \u2022 \u200b\u200btransportation_utilities \u2022 open_space \u2022 agriculture \u2022 other \u2022 unknown",
+      "examples": [
+        "non_retail_attraction"
+      ]
+    },
+    "origin_building_use_l1": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The primary building use category of the trip origin. Valid options are: \u2022 residential \u2022 commercial \u2022 industrial \u2022 civic_institutional \u2022 transportation_utilities \u2022 open space \u2022 agriculture \u2022 other \u2022 unknown",
+      "examples": [
+        "residential"
+      ]
+    },
+    "origin_building_use_l2": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The secondary building use category of the trip origin. Valid options are: \u2022 single_family \u2022 multi_family \u2022 office \u2022 retail \u2022 non_retail_attraction \u2022 education \u2022 healthcare \u2022 military \u2022 civic_institutional \u2022 \u200b\u200btransportation_utilities \u2022 open_space \u2022 agriculture \u2022 other \u2022 unknown",
+      "examples": [
+        "single_family"
+      ]
+    },
+    "destination_building_use_l1": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The primary building use category of the trip destination. Valid options are: \u2022 residential \u2022 commercial \u2022 industrial \u2022 civic_institutional \u2022 transportation_utilities \u2022 open space \u2022 agriculture \u2022 other \u2022 unknown",
+      "examples": [
+        "commercial"
+      ]
+    },
+    "destination_building_use_l2": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The secondary building use category of the trip destination. Valid options are: \u2022 single_family \u2022 multi_family \u2022 office \u2022 retail \u2022 non_retail_attraction \u2022 education \u2022 healthcare \u2022 military \u2022 civic_institutional \u2022 \u200b\u200btransportation_utilities \u2022 open_space \u2022 agriculture \u2022 other \u2022 unknown",
+      "examples": [
+        "non_retail_attraction"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

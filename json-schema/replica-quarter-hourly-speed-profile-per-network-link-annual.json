@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/replica/refs/heads/main/json-schema/replica-quarter-hourly-speed-profile-per-network-link-annual.json",
+  "title": "Annual Quarter-Hourly Speed Profiles",
+  "description": "One row of Replica's \"Annual Quarter-Hourly Speed Profiles\" dataset. Derived from the published schema table at https://documentation.replicahq.com/docs/quarter-hourly-speed-profile-per-network-link-annual.",
+  "x-source": "https://documentation.replicahq.com/docs/quarter-hourly-speed-profile-per-network-link-annual",
+  "x-generated": "2026-08-02",
+  "x-method": "derived",
+  "x-status": "active",
+  "type": "object",
+  "properties": {
+    "stable_edge_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A unique identifier for each road segment.",
+      "examples": [
+        "6544473848226082043"
+      ]
+    },
+    "osm_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "OSM Way ID (version 2021-09-01 for the 2021 data; version 2022-12-01 for the 2022 data)",
+      "examples": [
+        "5149900"
+      ]
+    },
+    "street_name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The common name of the network link if available. Matches the name assigned by OpenStreetMap.",
+      "examples": [
+        "Scenic Avenue"
+      ]
+    },
+    "highway": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The classification of the link based on OpenStreetMap data if available.",
+      "examples": [
+        "secondary_link"
+      ]
+    },
+    "length": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "The length of the network link in meters.",
+      "examples": [
+        "29.46"
+      ]
+    },
+    "lanes": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The number of lanes in the network link.",
+      "examples": [
+        "2"
+      ]
+    },
+    "heading": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The heading of the network link.",
+      "examples": [
+        "121"
+      ]
+    },
+    "compass_direction": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The compass direction of the network link.",
+      "examples": [
+        "SW"
+      ]
+    },
+    "geometry": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The geometry of the network link.",
+      "examples": [
+        "LINESTRING(-122.279327301964 37.8109962748959, -122.279142155032 37.8109143185075, -122.279041013398 37.8108588116808)"
+      ]
+    },
+    "speed_limit_mph": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Speed limit of the network link in miles per hour.",
+      "examples": [
+        "45"
+      ]
+    },
+    "free_flow_speed_mph": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Free-flow speed for the network link in miles per hour.",
+      "examples": [
+        "48"
+      ]
+    },
+    "mon_0, mon_1...mon_95": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "One column per quarter hour. The value in each column represents the speed on the network link in the quarter-hour bucket. Buckets are expressed as 0-95 and are counted from midnight. If a specific day of the week is chosen for download, the column names will reflect the day of week (e.g. mon_0, tue_0, wed_0). If an \"Average Weekday\" or \"Average Weekend Day\" is selected for download, the columns will be named wkdy_0...wkdy_95 and wknd_0...wknd_95 respectively. The average weekday values are averaged over Monday to Friday; the average weekend values are averaged over Saturday and Sunday.",
+      "examples": [
+        "66.2"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

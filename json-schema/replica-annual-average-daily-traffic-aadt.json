@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/replica/refs/heads/main/json-schema/replica-annual-average-daily-traffic-aadt.json",
+  "title": "Annual Average Daily Traffic (AADT)",
+  "description": "One row of Replica's \"Annual Average Daily Traffic (AADT)\" dataset. Derived from the published schema table at https://documentation.replicahq.com/docs/annual-average-daily-traffic-aadt.",
+  "x-source": "https://documentation.replicahq.com/docs/annual-average-daily-traffic-aadt",
+  "x-generated": "2026-08-02",
+  "x-method": "derived",
+  "x-status": "active",
+  "type": "object",
+  "properties": {
+    "stable_edge_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The matching stable edge id (mapping to Replica's road network) for this segment. This id will match the Places season for Fall of the selected year.",
+      "examples": [
+        "2171086143316490127"
+      ]
+    },
+    "comp_stable_edge_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "If bidirectional is True for this segment, this field provides the matching stable edge id (mapping to Replica's road network) for the opposing direction of travel. This id will match the Places season for Fall of the selected year.",
+      "examples": [
+        "13608319450172218181"
+      ]
+    },
+    "osm_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "OSM Way ID (version 2020-07-01 for the 2019 data; version 2021-09-01 for the 2021 data; version 2022-12-01 for the 2022 data)",
+      "examples": [
+        "155000229"
+      ]
+    },
+    "street_name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The common name of the network link if available. Matches the name assigned by OpenStreetMap.",
+      "examples": [
+        "Isabel Avenue"
+      ]
+    },
+    "highway": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The classification of the link based on OpenStreetMap data.",
+      "examples": [
+        "trunk"
+      ]
+    },
+    "length": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "The distance (length) of the network link in meters.",
+      "examples": [
+        "229.22"
+      ]
+    },
+    "bidirectional": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "True if the provided traffic volume is the sum for both directions of an undivided roadway. False if for only one direction.",
+      "examples": [
+        "TRUE"
+      ]
+    },
+    "heading": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The heading of the network link.",
+      "examples": [
+        "176"
+      ]
+    },
+    "compass_direction": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The compass direction of the network link.",
+      "examples": [
+        "NE"
+      ]
+    },
+    "geometry": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The geometry (linestring) for each network link.",
+      "examples": [
+        "LINESTRING(-97.398509 27.662232, -97.398556 27.662034, -97.398517 27.661988)"
+      ]
+    },
+    "aadt": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The annual average daily traffic volume of the network link. This value is inclusive of single-unit and combination truck volumes.",
+      "examples": [
+        "494"
+      ]
+    },
+    "aadt_single_unit": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The annual average daily traffic volume of single unit trucks on the network link. Populated for FRC 1 and 2 roads, null otherwise.",
+      "examples": [
+        "54"
+      ]
+    },
+    "aadt_combination": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The annual average daily traffic volume of combination trucks on the network link. Populated for FRC 1 and 2 roads, null otherwise.",
+      "examples": [
+        "44"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

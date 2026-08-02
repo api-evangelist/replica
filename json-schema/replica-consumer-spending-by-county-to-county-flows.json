@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/replica/refs/heads/main/json-schema/replica-consumer-spending-by-county-to-county-flows.json",
+  "title": "[Discontinued] Spend County-to-County Flows",
+  "description": "One row of Replica's \"[Discontinued] Spend County-to-County Flows\" dataset. Derived from the published schema table at https://documentation.replicahq.com/docs/consumer-spending-by-county-to-county-flows.",
+  "x-source": "https://documentation.replicahq.com/docs/consumer-spending-by-county-to-county-flows",
+  "x-generated": "2026-08-02",
+  "x-method": "derived",
+  "x-status": "discontinued",
+  "type": "object",
+  "properties": {
+    "home_geo_id": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "FIPS county code of the home location county.",
+      "examples": [
+        "48113"
+      ]
+    },
+    "home_geo_name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Name of the home location county.",
+      "examples": [
+        "Dallas County, TX"
+      ]
+    },
+    "merchant_geo_id": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "FIPS county code of the merchant location county.",
+      "examples": [
+        "48397"
+      ]
+    },
+    "merchant_geo_name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Name of the merchant location county.",
+      "examples": [
+        "Rockwall County, TX"
+      ]
+    },
+    "week/month_starting": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date",
+      "description": "The first day of the week (Saturday) or month of the corresponding row\u2019s data, depending on whether monthly or weekly data was selected.",
+      "examples": [
+        "2022-12-24"
+      ]
+    },
+    "category__spend": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "The total estimated consumer spend in the spend category in a given week by residents of the home_name county at merchants in the merchant_name county. Categories include: \u2022 Airline/hospitality/car rental \u2022 Entertainment/recreation \u2022 Gas stations/parking/taxis/tolls \u2022 Grocery stores \u2022 Restaurants/bars \u2022 Retail",
+      "examples": [
+        "537.92"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

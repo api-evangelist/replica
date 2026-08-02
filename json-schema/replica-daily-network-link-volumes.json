@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/replica/refs/heads/main/json-schema/replica-daily-network-link-volumes.json",
+  "title": "Daily Network Link Volumes",
+  "description": "One row of Replica's \"Daily Network Link Volumes\" dataset. Derived from the published schema table at https://documentation.replicahq.com/docs/daily-network-link-volumes.",
+  "x-source": "https://documentation.replicahq.com/docs/daily-network-link-volumes",
+  "x-generated": "2026-08-02",
+  "x-method": "derived",
+  "x-status": "active",
+  "type": "object",
+  "properties": {
+    "stableEdgeId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The unique ID of the network link."
+    },
+    "biStableEdgeId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The common identifier between two adjacent opposite-direction links for links on undivided roadways. On divided roadways, this field is a unique identifier similar to stableEdgeId."
+    },
+    "street_name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The principal name of the street belonging to the network link."
+    },
+    "date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The date of the network link volume estimation."
+    },
+    "daily_vehicle_trips": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The estimated vehicle trip count on the selected date for the selected link. If directional counts are selected, this count will be per stableEdgeId; if not, this count will be per biStableEdgeId, which sums up counts on undivided roadways."
+    }
+  },
+  "additionalProperties": true
+}

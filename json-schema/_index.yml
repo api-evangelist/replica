@@ -1,0 +1,122 @@
+generated: '2026-08-02'
+method: derived
+source: vocabulary/replica-data-dictionary.yml
+note: JSON Schemas derived one-per-dataset from Replica's published documentation schema tables. Types
+  are mapped from the documented "Content Type" column; all fields are nullable because the documentation
+  does not state required-ness.
+count: 19
+schemas:
+- file: replica-active-transportation.json
+  title: Active Transportation Trips
+  key: active-transportation
+  status: active
+  fields: 33
+  source: https://documentation.replicahq.com/docs/active-transportation
+- file: replica-annual-average-daily-traffic-aadt.json
+  title: Annual Average Daily Traffic (AADT)
+  key: annual-average-daily-traffic-aadt
+  status: active
+  fields: 13
+  source: https://documentation.replicahq.com/docs/annual-average-daily-traffic-aadt
+- file: replica-auto-tnc-trips.json
+  title: Auto and TNC Trips
+  key: auto-tnc-trips
+  status: active
+  fields: 33
+  source: https://documentation.replicahq.com/docs/auto-tnc-trips
+- file: replica-commercial-freight.json
+  title: Commercial Freight Trips
+  key: commercial-freight
+  status: active
+  fields: 33
+  source: https://documentation.replicahq.com/docs/commercial-freight
+- file: replica-consumer-spending-by-county-to-county-flows.json
+  title: '[Discontinued] Spend County-to-County Flows'
+  key: consumer-spending-by-county-to-county-flows
+  status: discontinued
+  fields: 6
+  source: https://documentation.replicahq.com/docs/consumer-spending-by-county-to-county-flows
+- file: replica-consumer-spending-by-home-merchant-location.json
+  title: '[Discontinued] Weekly Spend (by home location)'
+  key: consumer-spending-by-home-merchant-location
+  status: discontinued
+  fields: 5
+  source: https://documentation.replicahq.com/docs/consumer-spending-by-home-merchant-location
+- file: replica-crash-data.json
+  title: Crash Data
+  key: crash-data
+  status: active
+  fields: 16
+  source: https://documentation.replicahq.com/docs/crash-data
+- file: replica-daily-network-link-volumes.json
+  title: Daily Network Link Volumes
+  key: daily-network-link-volumes
+  status: active
+  fields: 5
+  source: https://documentation.replicahq.com/docs/daily-network-link-volumes
+- file: replica-daily-o-d-data.json
+  title: Daily O-D Pairs
+  key: daily-o-d-data
+  status: active
+  fields: 6
+  source: https://documentation.replicahq.com/docs/daily-o-d-data
+- file: replica-daily-vmt.json
+  title: Daily VMT
+  key: daily-vmt
+  status: active
+  fields: 4
+  source: https://documentation.replicahq.com/docs/daily-vmt
+- file: replica-demographics-employment.json
+  title: Demographics and Employment
+  key: demographics-employment
+  status: active
+  fields: 39
+  source: https://documentation.replicahq.com/docs/demographics-employment
+- file: replica-disaggregate-trip-tables.json
+  title: Seasonal Trip Table
+  key: disaggregate-trip-tables
+  status: active
+  fields: 33
+  source: https://documentation.replicahq.com/docs/disaggregate-trip-tables
+- file: replica-free-flow-speed-per-network-link.json
+  title: Annual Speeds per Network Link
+  key: free-flow-speed-per-network-link
+  status: active
+  fields: 15
+  source: https://documentation.replicahq.com/docs/free-flow-speed-per-network-link
+- file: replica-hourly-auto-volume-profile.json
+  title: Hourly Auto Volume Profile
+  key: hourly-auto-volume-profile
+  status: active
+  fields: 12
+  source: https://documentation.replicahq.com/docs/hourly-auto-volume-profile
+- file: replica-network-links.json
+  title: Network Links
+  key: network-links
+  status: active
+  fields: 13
+  source: https://documentation.replicahq.com/docs/network-links
+- file: replica-quarter-hourly-speed-profile-per-network-link-annual.json
+  title: Annual Quarter-Hourly Speed Profiles
+  key: quarter-hourly-speed-profile-per-network-link-annual
+  status: active
+  fields: 12
+  source: https://documentation.replicahq.com/docs/quarter-hourly-speed-profile-per-network-link-annual
+- file: replica-transit.json
+  title: Transit Trips
+  key: transit
+  status: active
+  fields: 40
+  source: https://documentation.replicahq.com/docs/transit
+- file: replica-turning-movement-counts-tmcs.json
+  title: Turning Movement Counts
+  key: turning-movement-counts-tmcs
+  status: active
+  fields: 15
+  source: https://documentation.replicahq.com/docs/turning-movement-counts-tmcs
+- file: replica-weekly-spend-by-merchant-location.json
+  title: '[Discontinued] Weekly Spend (by merchant location)'
+  key: weekly-spend-by-merchant-location
+  status: discontinued
+  fields: 5
+  source: https://documentation.replicahq.com/docs/weekly-spend-by-merchant-location

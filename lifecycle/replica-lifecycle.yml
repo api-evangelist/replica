@@ -1,0 +1,76 @@
+generated: '2026-08-02'
+method: searched
+source: https://documentation.replicahq.com/
+description: >-
+  Replica versions data products, not an API - there is no public developer API to version, deprecate
+  or sunset. Versioning is expressed as seasons (Places), weekly refreshes (Trends) and annual
+  vintages (traffic/speeds). Deprecation is expressed as dated "[Discontinued]" notices on the
+  affected dataset documentation pages. Replica publishes no status page, no SLA, and no formal
+  deprecation or versioning policy document.
+
+versioning:
+  scheme: seasonal-and-annual-data-vintages
+  docs: https://documentation.replicahq.com/docs/seasonal-mobility-model-methodology-extended-places
+  cadences:
+    - product: Places (seasonal trip table)
+      cadence: twice yearly (Spring and Fall seasons)
+      evidence: 'Data is released twice a year and is available for download in CSV format.'
+      source: https://documentation.replicahq.com/docs/disaggregate-trip-tables
+    - product: Trends (daily/weekly mobility data)
+      cadence: weekly refresh
+      evidence: 'Data is refreshed weekly and can be viewed or exported (CSV).'
+      source: https://documentation.replicahq.com/docs/daily-vmt
+    - product: Annual traffic datasets (AADT, speeds, hourly volume profiles)
+      cadence: annual vintage, keyed to the Fall Places season of the selected year
+      source: https://documentation.replicahq.com/docs/annual-average-daily-traffic-aadt
+  api_versioning: null
+  note: no public API version scheme exists; the private Replica Studio backend uses a /api/v1 path
+    prefix but is session-authenticated and undocumented.
+
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  practice: dated discontinuation notices published on the affected dataset documentation page
+  deprecated_datasets:
+    - dataset: Weekly Spend (by home location)
+      docs: https://documentation.replicahq.com/docs/consumer-spending-by-home-merchant-location
+      discontinued: '2024-12-28'
+      reason: 'Due to changes in upstream data sources, this data no longer meets Replica''s standards
+        for reliability, and we have discontinued Spend data as of December 28th, 2024.'
+    - dataset: Weekly Spend (by merchant location)
+      docs: https://documentation.replicahq.com/docs/weekly-spend-by-merchant-location
+      discontinued: '2024-12-28'
+      reason: same upstream data-source reliability notice
+    - dataset: Spend County-to-County Flows
+      docs: https://documentation.replicahq.com/docs/consumer-spending-by-county-to-county-flows
+      discontinued: '2024-12-28'
+      reason: same upstream data-source reliability notice
+    - dataset: Weekly Economic Model (methodology)
+      docs: https://documentation.replicahq.com/docs/economic-model-methodology
+      discontinued: '2024-12-28'
+      reason: same upstream data-source reliability notice
+
+sla:
+  url: null
+  uptime_target: null
+  note: no public SLA or uptime commitment found.
+
+status_page: null
+status_page_probe:
+  - {url: 'https://status.replicahq.com/', result: DNS does not resolve}
+  - {url: 'https://replicahq.statuspage.io/', result: not checked as no status host advertised in docs
+      or app}
+
+release_notes: https://help.replicahq.com/en/articles/4374395-replica-product-release-notes
+changelog_artifact: changelog/replica-changelog.yml
+
+data_quality:
+  reports: https://help.replicahq.com/en/collections/1606964-data-quality-reports
+  note: Replica publishes per-megaregion statistical validation reports as a quality/lifecycle signal.
+  validations_page: https://www.replicahq.com/data-validations
+
+x-evidence:
+  fetched: '2026-08-02'
+  hosts_probed: [replicahq.com, documentation.replicahq.com, help.replicahq.com, studio.replicahq.com,
+    api.studio.replicahq.com, status.replicahq.com]

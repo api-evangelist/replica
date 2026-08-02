@@ -1,0 +1,158 @@
+generated: '2026-08-02'
+method: derived
+source: vocabulary/replica-data-dictionary.yml
+docs: https://documentation.replicahq.com/docs/disaggregate-trip-tables
+description: >-
+  Entity-relationship graph for Replica's published datasets, derived from the join keys and
+  id-reference fields documented in the dataset schema tables on documentation.replicahq.com.
+  Replica's documentation states the tables are "cross-tabular, meaning it is linked to other tables
+  through common IDs, including person_id (the person making the trip), activity_id (the trip), or
+  route_id (transit routes or network links used for a trip)", and that the seasonal trip table joins
+  to the network links table on stableEdgeId. Replica publishes no OpenAPI, so this graph is derived
+  from the documented data dictionary rather than from spec $refs.
+
+entities:
+  - name: person
+    description: A synthetic individual in Replica's simulated population, with demographic and
+      employment attributes. Not a real person - Replica states it never receives, uses or outputs
+      personally identifiable information.
+    key: person_id
+    primary_dataset: json-schema/replica-demographics-employment.json
+    docs: https://documentation.replicahq.com/docs/demographics-employment
+
+  - name: household
+    description: A synthetic household grouping one or more synthetic persons.
+    key: household_id
+    primary_dataset: json-schema/replica-demographics-employment.json
+    docs: https://documentation.replicahq.com/docs/demographics-employment
+
+  - name: trip
+    description: One modeled trip (activity) between an origin and a destination with a discrete
+      purpose, for a typical weekday or weekend day in a given season and region.
+    key: activity_id
+    primary_dataset: json-schema/replica-disaggregate-trip-tables.json
+    docs: https://documentation.replicahq.com/docs/disaggregate-trip-tables
+    mode_specific_views:
+      - json-schema/replica-auto-tnc-trips.json
+      - json-schema/replica-transit.json
+      - json-schema/replica-active-transportation.json
+      - json-schema/replica-commercial-freight.json
+
+  - name: network_link
+    description: A directed road or pathway segment (split at intersections) used as the base layer for
+      modeling. Classifications derive from OpenStreetMap.
+    key: stableEdgeId
+    key_aliases: [stable_edge_id, comp_stable_edge_id, biStableEdgeId]
+    external_key: osm_id
+    primary_dataset: json-schema/replica-network-links.json
+    docs: https://documentation.replicahq.com/docs/network-links
+
+  - name: transit_route
+    description: A transit route used by a modeled transit trip; sourced from agency GTFS feeds.
+    key: route_id
+    key_aliases: [transit_route_ids]
+    primary_dataset: json-schema/replica-transit.json
+    docs: https://documentation.replicahq.com/docs/transit
+
+  - name: geography
+    description: A geographic unit - Census block group (bgrp) for trip origins and destinations,
+      or a FIPS-coded Census/administrative geography (geoid) for aggregate datasets.
+    key: geoid
+    key_aliases: [geo_id, home_geo_id, merchant_geo_id, origin_bgrp, destination_bgrp]
+    docs: https://documentation.replicahq.com/docs/daily-vmt
+
+  - name: intersection
+    description: A modeled intersection, used as the unit of turning-movement counts.
+    key: intersection_id
+    primary_dataset: json-schema/replica-turning-movement-counts-tmcs.json
+    docs: https://documentation.replicahq.com/docs/turning-movement-counts-tmcs
+
+relationships:
+  - from: household
+    to: person
+    kind: has_many
+    via: household_id
+    evidence: household_id present on the demographics and employment table alongside person_id
+  - from: person
+    to: trip
+    kind: has_many
+    via: person_id
+    evidence: person_id present on every trip table (seasonal, auto/TNC, transit, active, freight)
+  - from: trip
+    to: person
+    kind: belongs_to
+    via: person_id
+  - from: trip
+    to: household
+    kind: belongs_to
+    via: household_id
+  - from: trip
+    to: network_link
+    kind: has_many
+    via: network_link_ids
+    evidence: network_link_ids on the trip tables joins to network links on stableEdgeId
+  - from: trip
+    to: transit_route
+    kind: has_many
+    via: transit_route_ids
+    evidence: transit_route_ids on the trip tables joins to transit route_id
+  - from: trip
+    to: geography
+    kind: belongs_to
+    via: origin_bgrp
+    note: also destination_bgrp; block-group level origin/destination with lat/lng centroids
+  - from: network_link
+    to: network_link
+    kind: has_one
+    via: comp_stable_edge_id
+    note: the opposing direction of travel for a bidirectional segment
+  - from: intersection
+    to: network_link
+    kind: has_many
+    via: inbound_stable_edge_id
+    note: also outbound_osm_id; turning movements are counted between inbound and outbound links
+  - from: geography
+    to: geography
+    kind: has_many
+    via: geoid_origin
+    note: daily O-D pairs relate an origin geography to a destination geography (geoid_destination)
+
+link_datasets:
+  - dataset: json-schema/replica-daily-network-link-volumes.json
+    joins: [network_link]
+    via: stableEdgeId
+  - dataset: json-schema/replica-annual-average-daily-traffic-aadt.json
+    joins: [network_link]
+    via: stable_edge_id
+  - dataset: json-schema/replica-free-flow-speed-per-network-link.json
+    joins: [network_link]
+    via: stable_edge_id
+  - dataset: json-schema/replica-quarter-hourly-speed-profile-per-network-link-annual.json
+    joins: [network_link]
+    via: stable_edge_id
+  - dataset: json-schema/replica-hourly-auto-volume-profile.json
+    joins: [network_link]
+    via: stable_edge_id
+  - dataset: json-schema/replica-daily-vmt.json
+    joins: [geography]
+    via: geoid
+  - dataset: json-schema/replica-daily-o-d-data.json
+    joins: [geography]
+    via: geoid_origin
+
+identifier_conventions:
+  - note: Replica states trip, person and household identifiers are randomly assigned, not derived
+      from any real identity.
+    source: https://documentation.replicahq.com/docs/disaggregate-trip-tables
+  - note: stableEdgeId is spelled camelCase on the network links and daily network link volume tables
+      and snake_case (stable_edge_id) on the annual traffic/speed tables; both name the same key.
+  - note: geoid contains the FIPS code when the geographic feature is a Census geography.
+    source: https://documentation.replicahq.com/docs/daily-vmt
+
+x-evidence:
+  fetched: '2026-08-02'
+  pages: 31
+  schema_tables: 19
+  fields: 338
+  method: markdown documentation pages fetched from documentation.replicahq.com (ReadMe .md endpoints)
+    listed in https://documentation.replicahq.com/llms.txt

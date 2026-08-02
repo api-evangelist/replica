@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/replica/refs/heads/main/json-schema/replica-hourly-auto-volume-profile.json",
+  "title": "Hourly Auto Volume Profile",
+  "description": "One row of Replica's \"Hourly Auto Volume Profile\" dataset. Derived from the published schema table at https://documentation.replicahq.com/docs/hourly-auto-volume-profile.",
+  "x-source": "https://documentation.replicahq.com/docs/hourly-auto-volume-profile",
+  "x-generated": "2026-08-02",
+  "x-method": "derived",
+  "x-status": "active",
+  "type": "object",
+  "properties": {
+    "stable_edge_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The matching stable edge id (mapping to Replica's road network) for this segment. This id will match the Places season for Fall of the selected year.",
+      "examples": [
+        "13879083565943480423"
+      ]
+    },
+    "comp_stable_edge_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "If bidirectional is True for this segment, this field provides the matching stable edge id (mapping to Replica's road network) for the opposing direction of travel. This id will match the Places season for Fall of the selected year.",
+      "examples": [
+        "11547986894199161929"
+      ]
+    },
+    "osm_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "OSM Way ID (version 2020-07-01 for the 2019 data; version 2021-09-01 for the 2021 data; version 2022-12-01 for the 2022 data)",
+      "examples": [
+        "23730229"
+      ]
+    },
+    "street_name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The common name of the network link if available. Matches the name assigned by OpenStreetMap.",
+      "examples": [
+        "Isabel Avenue"
+      ]
+    },
+    "highway": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The classification of the link based on OpenStreetMap data.",
+      "examples": [
+        "trunk"
+      ]
+    },
+    "length": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "The distance (length) of the network link in meters.",
+      "examples": [
+        "229.22"
+      ]
+    },
+    "bidirectional": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "True if the provided traffic volume is the sum for both directions of an undivided roadway. False if for only one direction.",
+      "examples": [
+        "TRUE"
+      ]
+    },
+    "heading": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The heading of the network link.",
+      "examples": [
+        "176"
+      ]
+    },
+    "compass_direction": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The compass direction of the network link.",
+      "examples": [
+        "NE"
+      ]
+    },
+    "geometry": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The geometry (linestring) for each network link.",
+      "examples": [
+        "LINESTRING(-97.398509 27.662232, -97.398556 27.662034, -97.398517 27.661988)"
+      ]
+    },
+    "aadt": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "AADT on the network link. If the metric selected is Single Unit or Combination Truck Volume, this column will reflect the corresponding AADT for Single Unit or Combination Truck and be titled aadt_single_unit or aadt_combination.",
+      "examples": [
+        "4554"
+      ]
+    },
+    "wkdy_0....wkdy_23": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "One column per hour. The value in each column represents the volume on the network link in the hour bucket. Buckets are expressed as 0-23 and are counted from midnight. If an \"Average Weekday\" or \"Average Weekend Day\" is selected for download, the columns will be named wkdy_0...wkdy_23 and wknd_0...wknd_23 respectively. The average weekday values are averaged over Monday to Friday; the average weekend values are averaged over Saturday and Sunday. If \"All\" days of the week are selected for download, the columns will be labelled mon_0...mon_23, tue_0...tue_23, etc.",
+      "examples": [
+        "321.2"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

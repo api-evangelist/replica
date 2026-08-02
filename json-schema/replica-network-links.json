@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/replica/refs/heads/main/json-schema/replica-network-links.json",
+  "title": "Network Links",
+  "description": "One row of Replica's \"Network Links\" dataset. Derived from the published schema table at https://documentation.replicahq.com/docs/network-links.",
+  "x-source": "https://documentation.replicahq.com/docs/network-links",
+  "x-generated": "2026-08-02",
+  "x-method": "derived",
+  "x-status": "active",
+  "type": "object",
+  "properties": {
+    "stableEdgeId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A unique identifier for the network link.",
+      "examples": [
+        "1.63807E+19"
+      ]
+    },
+    "startLat": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "The latitude of the starting point of the network link, stored in decimal degrees.",
+      "examples": [
+        "34.36907793"
+      ]
+    },
+    "startLon": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "The longitude of the starting point of the network link, stored in decimal degrees.",
+      "examples": [
+        "-101.762211"
+      ]
+    },
+    "endLat": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "The latitude of the end point of the network link, stored in decimal degrees.",
+      "examples": [
+        "34.36866032"
+      ]
+    },
+    "endLon": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "The longitude of the end point of the network link, stored in decimal degrees.",
+      "examples": [
+        "-101.7656375"
+      ]
+    },
+    "streetName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The common name of the network link if available. Matches the name assigned by OpenStreetMap.",
+      "examples": [
+        "Sunrise Passage"
+      ]
+    },
+    "distance": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The distance (length) of the network link in millimeters.",
+      "examples": [
+        "318000"
+      ]
+    },
+    "osmid": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The OpenStreetMap ID assigned to the network link.",
+      "examples": [
+        "21250769"
+      ]
+    },
+    "speed": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The speed limit on the link in miles per hour.",
+      "examples": [
+        "20.69196279"
+      ]
+    },
+    "flags": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A flag denoting what type of vehicles and pedestrian traffic are permitted on the network edge.",
+      "examples": [
+        "[ALLOWS_CAR, ALLOWS_BIKE, ALLOWS_PEDESTRIAN]"
+      ]
+    },
+    "lanes": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The number of travel lanes on the network link. A \"-1\" value means we could not parse a lane count from OpenStreetMap (OSM). A \"0\" value means that the road isn't passable by cars (i.e., it doesn't have the allows_car flag that appears in the \"flags\" column in the table).",
+      "examples": [
+        "2"
+      ]
+    },
+    "highway": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The classification of the link based on OpenStreetMap data.",
+      "examples": [
+        "secondary_link"
+      ]
+    },
+    "geometry": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The geometry type for each network link including the start and end latitude and longitude points of the link segment.",
+      "examples": [
+        "LINESTRING(-93.254892 43.986738, -93.254799 43.993382)"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,81 @@
+generated: '2026-08-02'
+method: searched
+source: https://help.replicahq.com/en/articles/4374395-replica-product-release-notes
+docs: https://help.replicahq.com/en/collections/2519782-product-release-notes
+scheme: dated-release-notes
+description: >-
+  Replica publishes product release notes in its Intercom help center rather than an API changelog -
+  there is no public API to version. Releases are driven by (a) the seasonal data cadence for Places
+  (roughly two seasons per year, released well after the season they model), (b) annual traffic data
+  refreshes, and (c) platform/application updates. Entries below are the recent window captured from
+  the release-notes article; the live article is the source of truth.
+release_types:
+  - id: seasonal-data
+    description: A new Places season (Spring/Fall) of the activity-based travel model.
+  - id: annual-traffic-data
+    description: Annual refresh of AADT, speeds and network link datasets.
+  - id: platform
+    description: Studio platform, navigation and application updates.
+  - id: product-launch
+    description: A new application or data product.
+entries:
+  - date: '2026-06-08'
+    type: product-launch
+    title: Safety Hub launch
+    highlights:
+      - New safety product pairing Arity driving-behavior data with Replica mobility data.
+      - Framed against the ~40,000 people killed on U.S. roads each year.
+    docs: https://documentation.replicahq.com/docs/safety-hub
+  - date: '2026-05-05'
+    type: seasonal-data
+    title: Fall 2025 seasonal data
+    highlights:
+      - Improved travel-behavior modeling for visitor and airport trips.
+      - Improved commute timing and routing across modes.
+  - date: '2025-09-11'
+    type: seasonal-data
+    title: Spring 2025 seasonal data
+    highlights:
+      - Enhanced route-choice algorithm evaluating up to 100 distinct route alternatives per trip.
+      - Station-level transit ridership calibration.
+  - date: '2025-08-25'
+    type: platform
+    title: Platform navigation updates
+    highlights:
+      - Simplified navigation.
+      - Applications page optimized with search.
+      - New study templates for faster workflows.
+  - date: '2025-05-15'
+    type: seasonal-data
+    title: Fall 2024 season
+    highlights:
+      - New airport data integration.
+      - Expanded transit agency and GTFS feed coverage.
+      - Auto count data from 11 states.
+  - date: '2025'
+    type: annual-traffic-data
+    title: 2025 annual speeds and AADT updates
+    highlights:
+      - 50 million additional links covered by the speeds datasets.
+      - Updated speed-limit accuracy.
+      - Schema improvements.
+  - date: '2024-10-30'
+    type: seasonal-data
+    title: Spring 2024 season
+    highlights:
+      - Short-term rental data integration.
+      - Airport modeling for residents.
+      - Park-and-ride lot data.
+      - 22 new transit agencies.
+  - date: '2024-05-08'
+    type: seasonal-data
+    title: Fall 2023 season
+    highlights:
+      - Long-distance trip routing improvements.
+      - Enhanced work-from-home modeling.
+      - 70 additional transit agencies added.
+x-evidence:
+  fetched: '2026-08-02'
+  url: https://help.replicahq.com/en/articles/4374395-replica-product-release-notes
+  http_status: 200
+  note: dates transcribed from the article's MM.DD.YY headings

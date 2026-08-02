@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/replica/refs/heads/main/json-schema/replica-weekly-spend-by-merchant-location.json",
+  "title": "[Discontinued] Weekly Spend (by merchant location)",
+  "description": "One row of Replica's \"[Discontinued] Weekly Spend (by merchant location)\" dataset. Derived from the published schema table at https://documentation.replicahq.com/docs/weekly-spend-by-merchant-location.",
+  "x-source": "https://documentation.replicahq.com/docs/weekly-spend-by-merchant-location",
+  "x-generated": "2026-08-02",
+  "x-method": "derived",
+  "x-status": "discontinued",
+  "type": "object",
+  "properties": {
+    "geo_id": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The GEOID of the corresponding row's geography, as defined by the US Census Bureau.",
+      "examples": [
+        "36005014100"
+      ]
+    },
+    "geo_name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The name corresponding to the row\u2019s geography, as defined by the US Census Bureau or specified by the user.",
+      "examples": [
+        "141 (Bronx, NY)"
+      ]
+    },
+    "week/month_starting": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date",
+      "description": "The first day of the week (Saturday) or month of the corresponding row\u2019s data, depending on whether monthly or weekly data was selected.",
+      "examples": [
+        "2022-06-13"
+      ]
+    },
+    "population": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The total population in the geography selected.",
+      "examples": [
+        "5756"
+      ]
+    },
+    "category_spend_total": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "The total consumer spend in \": { \" in a given week across the following categories: \u2022 Airline/hospitality/car rental \u2022 Entertainment/recreation \u2022 Gas stations/parking/taxis/tolls \u2022 Grocery stores \u2022 Restaurants/bars \u2022 Retail Note: Spend by merchant estimates only include in-person spending.",
+      "examples": [
+        "42157.48438"
+      ]
+    }
+  },
+  "additionalProperties": true
+}
