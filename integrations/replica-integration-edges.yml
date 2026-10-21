@@ -1,0 +1,52 @@
+edges:
+- partner_name: GSA Multiple Award Schedule (MAS)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.gsaelibrary.gsa.gov/ElibMain/contractorInfo.do?contractNumber=47QTCA22D00AG&executeQuery=YES
+  category: federal procurement contract vehicle
+  contract_reference:
+    register: GSA eLibrary, Multiple Award Schedule (MAS) IT SIN contractor listings
+    standard: GSA Multiple Award Schedule (IT Large Category)
+    spec_file: null
+    role: gsa-mas-contract-holder
+    registered_name: REPLICA INC
+    register_id: 47QTCA22D00AG
+    matched_domain: replicahq.com
+    matched_by: domain
+    domain_source: web-address
+    sins:
+    - 511210 (software licenses)
+    contracts:
+    - 47QTCA22D00AG
+    signal_note: 'participation only: a MAS award is a federal contract vehicle (GSA pre-negotiated terms and pricing),
+      not a conformance test. SINs and contract numbers are context, never counted'
+    detected_by: sweep-us-federal-api-programs.py
+    detected: '2026-10-21'
+  detected_by: sweep-us-federal-api-programs.py
+  first_seen: '2026-10-21'
+generated: '2026-10-21'
+method: searched
+source:
+- https://api.data.gov/
+- https://github.com/GSA/api.data.gov/blob/main/content/users.csv
+- https://login.gov/partners/
+- https://github.com/GSA-TTS/identity-site
+- https://marketplace.fedramp.gov/products/
+- https://www.gsaelibrary.gsa.gov/ElibMain/home.do
+- https://api.data.gov/docs/
+- https://partners.login.gov/
+- https://marketplace.fedramp.gov/
+checked:
+- https://api.data.gov/
+- https://api.data.gov/docs/
+- https://github.com/GSA-TTS/identity-site
+- https://github.com/GSA/api.data.gov/blob/main/content/users.csv
+- https://login.gov/partners/
+- https://marketplace.fedramp.gov/
+- https://marketplace.fedramp.gov/products/
+- https://partners.login.gov/
+- https://www.gsaelibrary.gsa.gov/ElibMain/home.do
