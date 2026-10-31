@@ -64,50 +64,119 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Replica is a San Francisco-based data platform for the built environment, spun out of Alphabet's
-Sidewalk Labs in 2019, that operates a nationwide activity-based travel model. Its engine combines
-public data (US Census/ACS, GTFS, OpenStreetMap, land-use records, state traffic counts) with
-licensed private data (de-identified aggregate mobile location, credit transaction and
-driving-behavior data) to synthesize a privacy-preserving simulated population and a complete trip
-table for the United States.
+Replica is a San Francisco-based data platform for the built environment, spun out of Alphabet's Sidewalk Labs in 2019, that operates a nationwide activity-based travel model. Its analytical engine combines public data (US Census/ACS, GTFS transit feeds, OpenStreetMap road networks, land-use records, state traffic counts) with licensed private data (de-identified aggregate mobile location, credit transaction and driving-behavior data) to synthesize a privacy-preserving simulated population and a complete trip table for the United States. Products include Places (seasonal, high-fidelity activity-based travel model), Trends (weekly near-real-time mobility and land-use data), Safety Hub, Safe Streets Planner, and a suite of workflow applications used by state DOTs, MPOs, transit agencies, cities and counties. Data is consumed through the Replica Studio web platform, CSV export and direct database access; Replica publishes documented dataset schemas at documentation.replicahq.com but no public developer REST API, SDK or developer portal.
 
-- Website: https://www.replicahq.com/
-- Documentation: https://documentation.replicahq.com/
-- Help center: https://help.replicahq.com/en/
-- Platform (login): https://studio.replicahq.com/
-- GitHub: https://github.com/replicahq
+**Areas:** Company · Data · Mobility · Transportation · Geospatial · Urban Planning · Travel Demand Modeling · Government · Analytics · Data Platform
 
-## API surface
+## Replica on APIs.io
 
-**Replica publishes no public developer API.** Contract discovery probed `replicahq.com`,
-`documentation.replicahq.com`, `studio.replicahq.com` and `api.studio.replicahq.com` for OpenAPI,
-Swagger, GraphQL, MCP `tools/list`, A2A agent cards and every `/.well-known/*` discovery document —
-all missed. The documentation site is ReadMe.io-hosted but its API-reference section is not enabled.
-The Studio application is backed by a private `api.studio.replicahq.com/api/v1/*` service that
-answers `401 Unauthorized` behind an Express session cookie; it is undocumented and is not offered
-as a developer API. Beware the marketing site's SPA catch-all, which answers HTTP 200 with an HTML
-shell for `/openapi.json`, `/llms.txt` and every `/.well-known/*` path.
+Everything profiled for Replica is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/replica/](https://apis.io/providers/replica/)** — or go straight to one of the APIs or properties below.
 
-What Replica *does* publish machine-readably is its **dataset schemas** — field name, content type,
-sample value and description for each data product. Those are captured here.
+### Published properties
 
-## Artifacts
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| Path | What |
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [replica](https://apis.io/servers/replica/replica/)
+
+#### JSON Schema (19)
+
+The data models the API reads and writes.
+
+- [Active Transportation Trips](https://apis.io/schemas/replica/replica-active-transportation/)
+- [Annual Average Daily Traffic (AADT)](https://apis.io/schemas/replica/replica-annual-average-daily-traffic-aadt/)
+- [Auto and TNC Trips](https://apis.io/schemas/replica/replica-auto-tnc-trips/)
+- [Commercial Freight Trips](https://apis.io/schemas/replica/replica-commercial-freight/)
+- [[Discontinued] Spend County-to-County Flows](https://apis.io/schemas/replica/replica-consumer-spending-by-county-to-county-flows/)
+- [[Discontinued] Weekly Spend (by home location)](https://apis.io/schemas/replica/replica-consumer-spending-by-home-merchant-location/)
+- [Crash Data](https://apis.io/schemas/replica/replica-crash-data/)
+- [Daily Network Link Volumes](https://apis.io/schemas/replica/replica-daily-network-link-volumes/)
+- [Daily O-D Pairs](https://apis.io/schemas/replica/replica-daily-o-d-data/)
+- [Daily VMT](https://apis.io/schemas/replica/replica-daily-vmt/)
+- [Demographics and Employment](https://apis.io/schemas/replica/replica-demographics-employment/)
+- [Seasonal Trip Table](https://apis.io/schemas/replica/replica-disaggregate-trip-tables/)
+- [Annual Speeds per Network Link](https://apis.io/schemas/replica/replica-free-flow-speed-per-network-link/)
+- [Hourly Auto Volume Profile](https://apis.io/schemas/replica/replica-hourly-auto-volume-profile/)
+- [Network Links](https://apis.io/schemas/replica/replica-network-links/)
+- [Annual Quarter-Hourly Speed Profiles](https://apis.io/schemas/replica/replica-quarter-hourly-speed-profile-per-network-link-annual/)
+- [Transit Trips](https://apis.io/schemas/replica/replica-transit/)
+- [Turning Movement Counts](https://apis.io/schemas/replica/replica-turning-movement-counts-tmcs/)
+- [[Discontinued] Weekly Spend (by merchant location)](https://apis.io/schemas/replica/replica-weekly-spend-by-merchant-location/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Replica Domain Security](https://apis.io/security/replica/replica-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.replicahq.com/)
+- [Documentation](https://documentation.replicahq.com/)
+- [Getting started](https://help.replicahq.com/en/collections/1232529-introduction-to-replica)
+- [Support](https://help.replicahq.com/en/)
+- [Changelog](https://help.replicahq.com/en/articles/4374395-replica-product-release-notes)
+- [Blog](https://www.replicahq.com/blog)
+- [Terms of service](https://www.replicahq.com/terms-of-use)
+- [Privacy policy](https://www.replicahq.com/privacy-policy)
+- [GitHub](https://github.com/replicahq)
+
+## API Evangelist rating
+
+**Kin Score 17.4** — emerging · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
 |---|---|
-| `vocabulary/replica-data-dictionary.yml` | Data dictionary: 19 datasets, 338 documented fields, harvested from the documentation schema tables |
-| `json-schema/` | One JSON Schema (2020-12) per dataset, derived from the data dictionary, plus `_index.yml` |
-| `data-model/replica-data-model.yml` | Entity-relationship graph (person / household / trip / network_link / transit_route / geography / intersection) derived from the documented join keys |
-| `llms/replica-llms.txt` | Verbatim `llms.txt` from documentation.replicahq.com |
-| `changelog/replica-changelog.yml` | Structured recent release notes (seasonal data, annual traffic, platform, product launches) |
-| `lifecycle/replica-lifecycle.yml` | Data-vintage versioning cadence, dated dataset discontinuations, absent SLA/status page |
-| `conformance/replica-conformance.yml` | Reference-standard conformance (OSM, GTFS, FIPS, ACS/PUMS/CTPP/LEHD, NAICS, HPMS, NHTSA FARS, WGS 84, H3, WKT/GeoJSON, published privacy principles) plus the negative API-protocol rows |
-| `packages/replica-packages.yml` | First-party open-source libraries (no API client SDK exists) |
-| `well-known/replica-well-known.yml` | Full `/.well-known/` probe record — zero documents found |
-| `security/replica-domain-security.yml` | TLS/HSTS per host; DNSSEC, SPF and DMARC (p=reject) on replicahq.com |
+| Discoverability | 58.3 |
+| Contract quality | 0.0 |
+| Contract governance | 33.3 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 6.6 |
 
-## Disambiguation
+**Agent readiness 12.2** — agent-aware
 
-**Replica (replicahq.com)** — this repo — is not **Replica Cyber (replicacyber.com)**, **Replicate
-(replicate.com)**, **Replicated (replicated.com)**, **Replicant** or **Replika**. Public claims that
-"Replica achieved SOC 2 Type II" belong to Replica Cyber and are not attributed here.
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 10.8** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/replica/](https://apis.io/providers/replica/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Replica: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/replica/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
